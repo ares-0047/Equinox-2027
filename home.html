@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="welcome" class="welcome-section section-entrance">
+    <div class="container welcome-content">
+        <p class="eyebrow">EQUINOX 2027</p>
+        <h1>Ideas Without Borders.<br><span>Innovation Without Limits.</span></h1>
+        <p class="lead">An international 36-hour hybrid hackathon for students, developers, innovators, researchers, and technology enthusiasts.</p>
+        <div class="button-row">
+            <a href="#home" class="btn btn-primary">Explore the Event</a>
+            <a href="#registration" class="btn btn-secondary">Register</a>
+        </div>
+    </div>
+</section>
+
+<section id="home" class="hero section-entrance">
+    <div class="container hero-grid">
+        <div>
+            <p class="eyebrow">INTERNATIONAL HYBRID HACKATHON</p>
+            <h2>Build What the Future Needs.</h2>
+            <p class="hero-copy">An international 36-hour hybrid hackathon bringing together innovators, developers, and problem-solvers to create technology that matters.</p>
+            <div class="event-meta">
+                <span>{{ config.DATE }}</span>
+                <span>{{ config.VENUE }}</span>
+            </div>
+            <div class="button-row">
+                <a href="#challenges" class="btn btn-secondary">Explore Challenges</a>
+                {% if config.UNSTOP_URL %}
+                <a href="{{ config.UNSTOP_URL }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Register on Unstop</a>
+                {% else %}
+                <a href="#registration" class="btn btn-primary">Register on Unstop</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="hero-illustration" aria-label="Abstract connected technology illustration" role="img">
+            <svg viewBox="0 0 420 300" aria-hidden="true">
+                <path d="M60 220 150 130l70 55 90-125 50 70" />
+                <circle cx="60" cy="220" r="10" /><circle cx="150" cy="130" r="10" /><circle cx="220" cy="185" r="10" /><circle cx="310" cy="60" r="10" /><circle cx="360" cy="130" r="10" />
+            </svg>
+        </div>
+    </div>
+    <div class="container stats">
+        <div><strong>{{ config.DURATION }}</strong><span>Build period</span></div>
+        <div><strong>{{ config.EXPECTED_PARTICIPANTS }}</strong><span>Expected participants</span></div>
+        <div><strong>{{ config.EXPECTED_TEAMS }}</strong><span>Expected teams</span></div>
+    </div>
+</section>
+
+<section id="about-hackathon" class="section-entrance">
+    <div class="container narrow">
+        <p class="eyebrow">01 / THE PURPOSE</p>
+        <h2 class="section-title">About the Hackathon</h2>
+        <p class="section-intro">EQUINOX 2027 brings people and perspectives together across borders to turn meaningful ideas into practical solutions. Teams will explore real-world challenges through international collaboration, responsible technology, and interdisciplinary learning.</p>
+        <div class="feature-list">
+            <span>International collaboration</span><span>Real-world problem-solving</span><span>Technical creativity</span><span>Responsible technology</span>
+        </div>
+    </div>
+</section>
+
+<section id="challenges" class="section-soft section-entrance">
+    <div class="container">
+        <p class="eyebrow">02 / THE BRIEF</p><h2 class="section-title">Challenge Tracks</h2>
+        <div class="card-grid">
+            {% for track in config.TRACKS %}
+            <article class="card track-card{% if track.flagship %} flagship{% endif %}">
+                <div class="card-icon" aria-hidden="true">0{{ track.id }}</div>
+                <div><h3>{{ track.title }}</h3>{% if track.flagship %}<span class="flagship-badge">Flagship challenge</span>{% endif %}</div>
+                <p>{{ track.desc }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="how-it-works" class="section-entrance">
+    <div class="container">
+        <p class="eyebrow">03 / THE JOURNEY</p><h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div><span>01</span><h3>Explore</h3><p>Explore the challenge tracks and find the problem you want to solve.</p></div>
+            <div><span>02</span><h3>Register</h3><p>Register through the official Unstop event page.</p></div>
+            <div><span>03</span><h3>Complete</h3><p>Follow any required official registration steps.</p></div>
+            <div><span>04</span><h3>Build</h3><p>Participate, collaborate, and build technology that matters.</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="partners" class="section-soft section-entrance">
+    <div class="container">
+        <p class="eyebrow">04 / THE NETWORK</p><h2 class="section-title">Partners and Sponsors</h2>
+        <div class="partner-layout">
+            <div><h3>Organisers</h3><div class="partner-list">{% for org in config.ORGANISERS %}<div class="partner-card"><strong>{{ org.name }}</strong><span>{{ org.desc }}</span></div>{% endfor %}</div></div>
+            <div class="partner-card host-card"><p class="eyebrow">HOST INSTITUTION</p><strong>{{ config.HOST_INSTITUTION }}</strong><span>Roorkee, Uttarakhand, India</span></div>
+        </div>
+        <div class="open-partnership"><div><h3>Technology, knowledge, and sponsorship opportunities are open.</h3><p>Contact the organisers to explore a partnership.</p></div><a href="#contact" class="btn btn-primary">Become a Partner</a></div>
+    </div>
+</section>
+
+<section id="schedule" class="section-entrance">
+    <div class="container narrow"><p class="eyebrow">05 / THE CALENDAR</p><h2 class="section-title">Event Schedule</h2><div class="timeline">{% for item in config.SCHEDULE %}<div class="timeline-item"><span>{{ item.time }}</span><strong>{{ item.event }}</strong></div>{% endfor %}</div><p class="provisional">All dates and timings are provisional and subject to official announcement.</p></div>
+</section>
+
+<section id="about-us" class="section-soft section-entrance">
+    <div class="container"><p class="eyebrow">06 / THE PEOPLE</p><h2 class="section-title">About the Organisers</h2><div class="card-grid organiser-grid">{% for org in config.ORGANISERS %}<article class="card"><h3>{{ org.name }}</h3><p>{{ org.desc }}</p></article>{% endfor %}</div><p class="host-note">Hosted by <strong>{{ config.HOST_INSTITUTION }}</strong>, Roorkee, Uttarakhand, India.</p></div>
+</section>
+
+<section id="registration" class="section-entrance">
+    <div class="container narrow"><p class="eyebrow">07 / JOIN EQUINOX</p><h2 class="section-title">Registration</h2><p class="section-intro">Complete the official steps below. External links are only shown when configured by the organisers.</p><div class="registration-steps">
+        <div class="registration-step"><span>01</span><div><h3>Register on Unstop</h3><p>Begin through the official event listing.</p>{% if config.UNSTOP_URL %}<a class="btn btn-primary" href="{{ config.UNSTOP_URL }}" target="_blank" rel="noopener noreferrer">Continue to Unstop</a>{% else %}<p class="notice">The Unstop link will be announced soon.</p>{% endif %}</div></div>
+        <div class="registration-step"><span>02</span><div><h3>Follow official instructions</h3><p>Review the instructions provided by the organisers and complete any required follow-up steps.</p></div></div>
+        <div class="registration-step"><span>03</span><div><h3>Payment registration, if required</h3><p>Use the official form only if payment registration is required.</p>{% if config.GOOGLE_FORM_URL %}<a class="btn btn-secondary" href="{{ config.GOOGLE_FORM_URL }}" target="_blank" rel="noopener noreferrer">Open Payment Registration Form</a>{% else %}<p class="notice">The payment registration form will be available upon official announcement.</p>{% endif %}</div></div>
+    </div></div>
+</section>
+
+<section id="faqs" class="section-soft section-entrance">
+    <div class="container narrow"><p class="eyebrow">08 / ANSWERS</p><h2 class="section-title">Frequently Asked Questions</h2><div class="accordion">
+        {% set faqs = [{"q": "What is EQUINOX 2027?", "a": "An international 36-hour hybrid hackathon bringing together students, developers, innovators, researchers, and technology enthusiasts."}, {"q": "Is the hackathon international?", "a": "Yes. The hybrid format supports on-campus and international online participation."}, {"q": "Is the event online or offline?", "a": "It is hybrid, with on-campus participation at Quantum University and online participation for international attendees."}, {"q": "Where is the physical venue?", "a": config.VENUE}, {"q": "How long will the hackathon last?", "a": "The build period is 36 hours."}, {"q": "How can I register?", "a": "Use the registration steps above and the official Unstop link when it is announced."}, {"q": "Where can I complete payment registration?", "a": "The official Google Form will be linked here if payment registration is required."}, {"q": "What are the challenge tracks?", "a": "Edge Intelligence and Industrial IoT; Digital Twins and Serious Games; Cybersecurity and Post-Quantum Security; Public Technology and Digital Governance; and Sustainability and SDG Innovation."}, {"q": "Can students from other institutions participate?", "a": "The event is designed for broad participation. Final eligibility details will be shared in the official registration instructions."}, {"q": "When will the final schedule be announced?", "a": "The schedule is provisional and will be updated through official announcements."}, {"q": "How can an organisation become a sponsor?", "a": "Use the Become a Partner link to contact the organisers about open partnership opportunities."}, {"q": "How can I contact the organisers?", "a": "Email velocityclub@quantumuniversity.edu.in or call +91 91421 84950."}] %}
+        {% for faq in faqs %}<div class="accordion-item"><h3><button class="accordion-header" type="button" aria-expanded="false">{{ faq.q }}<span aria-hidden="true">+</span></button></h3><div class="accordion-content" hidden><p>{{ faq.a }}</p></div></div>{% endfor %}
+    </div></div>
+</section>
+
+<section id="contact" class="section-entrance">
+    <div class="container"><p class="eyebrow">09 / CONNECT</p><h2 class="section-title">Contact</h2><div class="contact-grid"><div class="contact-details"><h3>Let’s build what the future needs.</h3><p><strong>Event:</strong> {{ config.EVENT_NAME }}</p><p><strong>Organisers:</strong> Velocity, Horizon IoT Club, and International Partnership Office.</p><p><strong>Email:</strong> <a href="mailto:{{ config.CONTACT_EMAIL }}">{{ config.CONTACT_EMAIL }}</a></p><p><strong>Phone:</strong> <a href="tel:{{ config.CONTACT_PHONE | replace(" ", "") }}">{{ config.CONTACT_PHONE }}</a></p><p><strong>Venue:</strong> {{ config.VENUE }}</p></div><form class="card contact-form" action="/contact" method="POST"><div class="form-group"><label for="name">Name</label><input id="name" name="name" type="text" required maxlength="100"></div><div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required maxlength="254"></div><div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="5" required maxlength="2000"></textarea></div><button class="btn btn-primary" type="submit">Send Message</button><p class="form-note">No email service is configured yet; your message will be acknowledged without claiming delivery.</p></form></div></div>
+</section>
+
+<footer id="footer">
+    <div class="container footer-grid"><div><a href="#welcome" class="nav-brand">EQUINOX <span>2027</span></a><p>{{ config.TAGLINE }}</p><p>{{ config.PARTICIPATION_FORMAT }} hackathon hosted by {{ config.HOST_INSTITUTION }}.</p></div><div><h3>Explore</h3><a href="#challenges">Challenges</a><a href="#schedule">Schedule</a><a href="#registration">Registration</a><a href="#faqs">FAQs</a></div><div><h3>Organisers</h3><p>Velocity</p><p>Horizon IoT Club</p><p>International Partnership Office</p><a href="mailto:{{ config.CONTACT_EMAIL }}">{{ config.CONTACT_EMAIL }}</a></div></div><div class="container footer-bottom"><span>&copy; 2027 {{ config.EVENT_NAME }} Organisers. All rights reserved.</span><a href="#contact">Contact</a></div>
+</footer>
+<button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑</button>
+{% endblock %}

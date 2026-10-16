@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | {{ config.EVENT_NAME }}</title>
+    <!-- Updated to link directly to style.css in the same flat folder -->
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .welcome-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--color-background);
+            padding: 1.5rem;
+        }
+        .welcome-brand {
+            font-size: 4rem;
+            color: var(--color-navy);
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            animation: fadeIn 1s ease-out;
+        }
+        .welcome-tagline {
+            font-size: 1.5rem;
+            color: var(--color-muted);
+            margin-bottom: 2rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        .welcome-sub {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            margin-bottom: 3rem;
+            animation: fadeIn 1.4s ease-out;
+        }
+        .welcome-actions {
+            display: flex;
+            gap: 1rem;
+            animation: fadeIn 1.6s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-screen">
+        <h1 class="welcome-brand">{{ config.EVENT_NAME }}</h1>
+        <p class="welcome-tagline">{{ config.TAGLINE }}</p>
+        <p class="welcome-sub">An International 36-Hour Hybrid Hackathon.</p>
+        <div class="welcome-actions">
+            <!-- Nunjucks will process url_for using the helper in server.js -->
+            <a href="{{ url_for('home') }}" class="btn btn-primary">Explore {{ config.EVENT_NAME }}</a>
+            <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
+        </div>
+    </div>
+</body>
+</html>
