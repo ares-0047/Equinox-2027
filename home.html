@@ -14,29 +14,45 @@
 
 <section id="home" class="hero event-section section-entrance">
     <div class="container hero-grid">
-        <div>
-            <p class="eyebrow">INTERNATIONAL HYBRID HACKATHON</p>
-            <h2>Build What the Future Needs.</h2>
-            <p class="hero-copy">An international 36-hour hybrid hackathon bringing together innovators, developers, and problem-solvers to create technology that matters.</p>
+        <div class="hero-content">
+            <p class="eyebrow hero-kicker"><span class="status-dot" aria-hidden="true"></span> INTERNATIONAL · HYBRID · 36-HOUR HACKATHON</p>
+            <h2>Build What the <span>Future Needs.</span></h2>
+            <p class="hero-copy">One global challenge. Brilliant minds. Real-world impact. Bring your ideas to Equinox 2027 and turn bold thinking into technology that matters.</p>
             <div class="event-meta">
-                <span>{{ config.DATE }}</span>
-                <span>{{ config.VENUE }}</span>
+                <span class="event-meta-item"><span class="meta-icon" aria-hidden="true">◷</span><span><strong>{{ config.DATE }}</strong><small>Event date · tentative</small></span></span>
+                <span class="event-meta-item"><span class="meta-icon" aria-hidden="true">⌖</span><span><strong>Quantum University</strong><small>Roorkee, Uttarakhand · Hybrid participation</small></span></span>
             </div>
-            <div class="button-row">
-                <a href="#challenges" class="btn btn-secondary">Explore Challenges</a>
-                {% if config.UNSTOP_URL %}
-                <a href="{{ config.UNSTOP_URL }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Register on Unstop</a>
-                {% else %}
-                <a href="#registration" class="btn btn-primary">Register on Unstop</a>
-                {% endif %}
+            <div class="button-row hero-actions">
+                <a href="#challenges" class="btn btn-primary">Explore Challenges <span aria-hidden="true">→</span></a>
+                <a href="#registration" class="btn btn-secondary">How to Participate</a>
             </div>
+            <p class="hero-note">Organised with Velocity, Horizon IoT Club and the International Partnership Office.</p>
         </div>
-        <div class="hero-illustration image-placeholder" aria-label="Image placeholder for Build What the Future Needs" role="img">Image placeholder</div>
+        <div class="hero-visual" role="img" aria-label="Equinox 2027 innovation graphic with connected orbit rings and technology themes">
+            
+        </div>
     </div>
     <div class="container stats">
         <div><strong>{{ config.DURATION }}</strong><span>Build period</span></div>
         <div><strong>{{ config.EXPECTED_PARTICIPANTS }}</strong><span>Expected participants</span></div>
         <div><strong>{{ config.EXPECTED_TEAMS }}</strong><span>Expected teams</span></div>
+    </div>
+</section>
+
+<section id="countdown" class="countdown-section section-entrance" aria-labelledby="countdown-title">
+    <div class="container countdown-shell">
+        <div class="countdown-heading">
+            <p class="eyebrow countdown-kicker"><span class="status-dot" aria-hidden="true"></span> THE COUNTDOWN IS ON</p>
+            <h2 id="countdown-title">The future starts <span>here.</span></h2>
+            <p>Every second brings us closer to bold ideas, brilliant minds, and real-world impact.</p>
+        </div>
+        <div class="countdown-grid" role="timer" aria-label="Time remaining until Equinox 2027">
+            <div class="countdown-unit"><strong id="countdown-days">---</strong><span>Days</span></div>
+            <div class="countdown-unit"><strong id="countdown-hours">--</strong><span>Hours</span></div>
+            <div class="countdown-unit"><strong id="countdown-minutes">--</strong><span>Minutes</span></div>
+            <div class="countdown-unit"><strong id="countdown-seconds">--</strong><span>Seconds</span></div>
+        </div>
+        <p class="countdown-footnote"><span aria-hidden="true">◷</span> 24 February 2027 <span class="countdown-separator">·</span> Indian Standard Time (IST)</p>
     </div>
 </section>
 

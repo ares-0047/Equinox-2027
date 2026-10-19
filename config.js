@@ -1,7 +1,7 @@
 module.exports = {
     EVENT_NAME: "EQUINOX 2027",
     TAGLINE: "Ideas Without Borders. Innovation Without Limits.",
-    DATE: "22 February 2027 (Tentative)",
+    DATE: "24 February 2027 (Tentative)",
     DURATION: "36 hours",
     VENUE: "Shyamji Auditorium, Quantum University, Roorkee, Uttarakhand, India",
     PARTICIPATION_FORMAT: "Hybrid (On-campus & International Online)",

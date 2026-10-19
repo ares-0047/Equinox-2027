@@ -65,6 +65,40 @@
     overlay?.addEventListener("click", function (event) { if (event.target === overlay) closeSearch(); });
     document.addEventListener("keydown", function (event) { if (event.key === "Escape" && overlay && !overlay.hidden) closeSearch(); });
 
+    // EQUINOX 2027 live countdown (24 Feb 2027, 00:00 IST; update time when confirmed).
+    const countdown = document.getElementById("countdown");
+    if (countdown) {
+        const eventStart = new Date("2027-02-24T00:00:00+05:30").getTime();
+        const units = {
+            days: document.getElementById("countdown-days"),
+            hours: document.getElementById("countdown-hours"),
+            minutes: document.getElementById("countdown-minutes"),
+            seconds: document.getElementById("countdown-seconds")
+        };
+        const heading = document.getElementById("countdown-title");
+        function updateCountdown() {
+            const remaining = eventStart - Date.now();
+            if (remaining <= 0) {
+                units.days.textContent = "00";
+                units.hours.textContent = "00";
+                units.minutes.textContent = "00";
+                units.seconds.textContent = "00";
+                if (heading) heading.innerHTML = 'EQUINOX 2027 <span>starts today!</span>';
+                return false;
+            }
+            units.days.textContent = String(Math.floor(remaining / 86400000)).padStart(2, "0");
+            units.hours.textContent = String(Math.floor((remaining % 86400000) / 3600000)).padStart(2, "0");
+            units.minutes.textContent = String(Math.floor((remaining % 3600000) / 60000)).padStart(2, "0");
+            units.seconds.textContent = String(Math.floor((remaining % 60000) / 1000)).padStart(2, "0");
+            return true;
+        }
+        if (updateCountdown()) {
+            const countdownInterval = window.setInterval(function () {
+                if (!updateCountdown()) window.clearInterval(countdownInterval);
+            }, 1000);
+        }
+    }
+
     const backToTop = document.getElementById("back-to-top");
     window.addEventListener("scroll", function () { backToTop?.classList.toggle("visible", window.scrollY > 600); }, { passive: true });
     backToTop?.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
