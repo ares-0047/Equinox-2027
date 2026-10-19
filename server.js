@@ -41,6 +41,11 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => res.redirect('/home'));
 app.get('/home', (req, res) => res.render('home.html'));
 app.get('/register', (req, res) => res.render('register.html'));
+app.get('/clubs/:slug', (req, res) => {
+    const club = config.CLUBS[req.params.slug];
+    if (!club) return res.status(404).render('404.html');
+    return res.render('club.html', { club });
+});
 app.post('/contact', (req, res) => {
     const name = typeof req.body.name === 'string' ? req.body.name.trim() : '';
     const email = typeof req.body.email === 'string' ? req.body.email.trim() : '';
