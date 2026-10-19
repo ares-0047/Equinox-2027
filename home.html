@@ -1,11 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 <section id="welcome" class="welcome-section section-entrance">
-    <div class="container welcome-content">
-        <p class="eyebrow">EQUINOX 2027</p>
-        <h1>Ideas Without Borders.<br><span>Innovation Without Limits.</span></h1>
-        <p class="lead">An international 36-hour hybrid hackathon for students, developers, innovators, researchers, and technology enthusiasts.</p>
-        <div class="button-row">
+    <div class="container welcome-content event-lockup">
+        <div class="event-presentation">
+            <img class="quantum-hero-logo" src="/qtm-logo.png" alt="Quantum University, Roorkee, Uttarakhand">
+            <span class="presentation-rule" aria-hidden="true"></span>
+            <p class="presents-label">PRESENTS</p>
+        </div>
+        <div class="event-mark-stage" aria-label="EQUINOX 2027 international hackathon">
+            <span class="stage-orbit stage-orbit-outer" aria-hidden="true"></span>
+            <span class="stage-orbit stage-orbit-inner" aria-hidden="true"></span>
+            <span class="stage-orbit stage-orbit-arc" aria-hidden="true"></span>
+            <span class="stage-orbit stage-orbit-arc stage-orbit-arc-reverse" aria-hidden="true"></span>
+            <span class="stage-axis" aria-hidden="true"></span>
+            <span class="stage-crosshair stage-crosshair-left" aria-hidden="true"></span>
+            <span class="stage-crosshair stage-crosshair-right" aria-hidden="true"></span>
+            <img class="equinox-main-logo" src="/equinox-wordmark.png" alt="EQUINOX 2027">
+            <span class="stage-index stage-index-left">EQX / 27                |               36H · HYBRID</span>
+
+        </div>
+        <p class="event-subtitle">THE INTERNATIONAL HACKATHON</p>
+        <p class="event-tagline">IDEAS <span>×</span> PEOPLE <span>×</span> TECHNOLOGY</p>
+        <div class="button-row event-hero-actions">
             <a href="#home" class="btn btn-primary">Explore the Event</a>
             <a href="#registration" class="btn btn-secondary">Register</a>
         </div>
@@ -13,25 +29,39 @@
 </section>
 
 <section id="home" class="hero event-section section-entrance">
-    <div class="container hero-grid">
-        <div>
-            <p class="eyebrow">INTERNATIONAL HYBRID HACKATHON</p>
+    <div class="container event-overview">
+        <div class="overview-heading">
+            <p class="eyebrow">EQUINOX 2027 / EVENT DETAILS</p>
             <h2>Build What the Future Needs.</h2>
-            <p class="hero-copy">An international 36-hour hybrid hackathon bringing together innovators, developers, and problem-solvers to create technology that matters.</p>
-            <div class="event-meta">
-                <span>{{ config.DATE }}</span>
-                <span>{{ config.VENUE }}</span>
-            </div>
-            <div class="button-row">
-                <a href="#challenges" class="btn btn-secondary">Explore Challenges</a>
-                {% if config.UNSTOP_URL %}
-                <a href="{{ config.UNSTOP_URL }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Register on Unstop</a>
-                {% else %}
-                <a href="#registration" class="btn btn-primary">Register on Unstop</a>
-                {% endif %}
-            </div>
+            <p class="hero-copy">A 36-hour international hybrid hackathon bringing together innovators, developers, and problem-solvers to create technology that matters.</p>
         </div>
-        <div class="hero-illustration image-placeholder" aria-label="Image placeholder for Build What the Future Needs" role="img">Image placeholder</div>
+        <div class="event-detail-grid">
+            <article class="event-detail-card date-card">
+                <span class="detail-index">01 / WHEN</span>
+                <span class="detail-symbol" aria-hidden="true">◷</span>
+                <h3>Event Date</h3>
+                <p>{{ config.DATE }}</p>
+                <span class="detail-footnote">TENTATIVE SCHEDULE</span>
+            </article>
+            <article class="event-detail-card venue-card">
+                <img class="venue-campus-image" src="/quantum-campus.webp" alt="Quantum University campus building" loading="lazy">
+                <div class="venue-copy">
+                    <span class="detail-index">02 / WHERE</span>
+                    <span class="detail-symbol venue-symbol" aria-hidden="true">◎</span>
+                    <h3>Venue</h3>
+                    <p>{{ config.VENUE }}</p>
+                    <span class="detail-footnote">ON-CAMPUS + ONLINE</span>
+                </div>
+            </article>
+        </div>
+        <div class="event-overview-actions button-row">
+            <a href="#challenges" class="btn btn-secondary">Explore Challenges</a>
+            {% if config.UNSTOP_URL %}
+            <a href="{{ config.UNSTOP_URL }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Register on Unstop</a>
+            {% else %}
+            <a href="#registration" class="btn btn-primary">Register on Unstop</a>
+            {% endif %}
+        </div>
     </div>
     <div class="container stats">
         <div><strong>{{ config.DURATION }}</strong><span>Build period</span></div>
@@ -39,7 +69,6 @@
         <div><strong>{{ config.EXPECTED_TEAMS }}</strong><span>Expected teams</span></div>
     </div>
 </section>
-
 <section id="about-hackathon" class="section-entrance">
     <div class="container narrow">
         <p class="eyebrow">01 / THE PURPOSE</p>
@@ -84,7 +113,13 @@
         <div class="card-grid track-grid">
             {% for track in config.TRACKS %}
             <article class="card track-card{% if track.flagship %} flagship{% endif %}">
-                <div class="card-icon" aria-hidden="true">0{{ track.id }}</div>
+                <div class="track-card-top"><span class="track-number">0{{ track.id }}</span><span class="track-icon-art" aria-hidden="true">
+                    {% if track.icon == "cpu" %}<svg viewBox="0 0 48 48" fill="none"><rect x="12" y="12" width="24" height="24" rx="3"/><rect x="19" y="19" width="10" height="10" rx="1"/><path d="M18 4v8M30 4v8M18 36v8M30 36v8M4 18h8M4 30h8M36 18h8M36 30h8"/></svg>
+                    {% elif track.icon == "monitor" %}<svg viewBox="0 0 48 48" fill="none"><rect x="5" y="7" width="38" height="27" rx="2"/><path d="M17 42h14M24 34v8M15 25l6-7 5 4 7-8"/></svg>
+                    {% elif track.icon == "shield" %}<svg viewBox="0 0 48 48" fill="none"><path d="M24 4 40 10v12c0 10-7 17-16 22C15 39 8 32 8 22V10L24 4Z"/><path d="m17 24 5 5 10-11"/></svg>
+                    {% elif track.icon == "users" %}<svg viewBox="0 0 48 48" fill="none"><circle cx="18" cy="16" r="7"/><path d="M5 40v-4c0-6 5-10 13-10s13 4 13 10v4M31 10a7 7 0 0 1 0 13M35 27c5 1 8 4 8 9v4"/></svg>
+                    {% else %}<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="19"/><path d="M5 24h38M24 5c6 6 9 12 9 19s-3 13-9 19c-6-6-9-12-9-19s3-13 9-19Z"/><path d="M10 12h28M10 36h28"/></svg>{% endif %}
+                </span></div>
                 <div><h3>{{ track.title }}</h3>{% if track.flagship %}<span class="flagship-badge">Flagship challenge</span>{% endif %}</div>
                 <p>{{ track.desc }}</p>
             </article>
@@ -109,8 +144,8 @@
     <div class="container">
         <p class="eyebrow">04 / THE NETWORK</p><h2 class="section-title">Partners and Sponsors</h2>
         <div class="partner-layout">
-            <div><h3>Organisers</h3><div class="partner-list">{% for org in config.ORGANISERS %}<a class="partner-card" href="/clubs/{{ org.slug }}"><strong>{{ org.name }}</strong><span>{{ org.desc }}</span><span class="partner-link">View club details →</span></a>{% endfor %}</div></div>
-            <div class="partner-card host-card"><p class="eyebrow">HOST INSTITUTION</p><strong>{{ config.HOST_INSTITUTION }}</strong><span>Roorkee, Uttarakhand, India</span></div>
+            <div><h3>Organisers</h3><div class="partner-list">{% for org in config.ORGANISERS %}<a class="partner-card" href="/clubs/{{ org.slug }}"><span class="organiser-logo-wrap {% if org.slug == 'velocity' %}velocity-logo-wrap{% elif org.slug == 'horizon' %}horizon-logo-wrap{% else %}ipo-logo-wrap{% endif %}"><img class="organiser-logo organiser-logo-{{ org.slug }}" src="{% if org.slug == 'velocity' %}/velocity-logo.png{% elif org.slug == 'horizon' %}/horizon-logo.png{% else %}/ipo-logo.png{% endif %}" alt="{{ org.name }} logo" loading="lazy"></span><strong>{{ org.name }}</strong><span>{{ org.desc }}</span><span class="partner-link">View details →</span></a>{% endfor %}</div></div>
+            <div class="partner-card host-card"><p class="eyebrow">HOST INSTITUTION</p><img class="host-university-logo" src="/qtm-logo.png" alt="Quantum University logo" loading="lazy"><strong>{{ config.HOST_INSTITUTION }}</strong><span>Roorkee, Uttarakhand, India</span></div>
         </div>
         <div class="open-partnership"><div><h3>Technology, knowledge, and sponsorship opportunities are open.</h3><p>Contact the organisers to explore a partnership.</p></div><a href="#contact" class="btn btn-primary">Become a Partner</a></div>
     </div>
@@ -121,7 +156,7 @@
 </section>
 
 <section id="about-us" class="section-soft section-entrance">
-    <div class="container"><p class="eyebrow">06 / THE PEOPLE</p><h2 class="section-title">About the Organisers</h2><div class="card-grid organiser-grid">{% for org in config.ORGANISERS %}<a class="card organiser-card" href="/clubs/{{ org.slug }}"><div class="logo-placeholder" role="img" aria-label="Logo placeholder for {{ org.name }}">Logo</div><h3>{{ org.name }}</h3><p>{{ org.desc }}</p><span class="partner-link">Explore more →</span></a>{% endfor %}</div><p class="host-note">Hosted by <strong>{{ config.HOST_INSTITUTION }}</strong>, Roorkee, Uttarakhand, India.</p></div>
+    <div class="container"><p class="eyebrow">06 / THE PEOPLE</p><h2 class="section-title">About the Organisers</h2><div class="card-grid organiser-grid">{% for org in config.ORGANISERS %}<a class="card organiser-card" href="/clubs/{{ org.slug }}"><div class="organiser-profile-logo {% if org.slug == 'velocity' %}velocity-logo-wrap{% elif org.slug == 'horizon' %}horizon-logo-wrap{% else %}ipo-logo-wrap{% endif %}"><img class="organiser-logo organiser-logo-{{ org.slug }}" src="{% if org.slug == 'velocity' %}/velocity-logo.png{% elif org.slug == 'horizon' %}/horizon-logo.png{% else %}/ipo-logo.png{% endif %}" alt="{{ org.name }} logo" loading="lazy"></div><h3>{{ org.name }}</h3><p>{{ org.desc }}</p><span class="partner-link">Explore more →</span></a>{% endfor %}</div><p class="host-note">Hosted by <strong>{{ config.HOST_INSTITUTION }}</strong>, Roorkee, Uttarakhand, India.</p></div>
 </section>
 
 <section id="registration" class="section-entrance">
@@ -144,7 +179,7 @@
 </section>
 
 <footer id="footer">
-    <div class="container footer-grid"><div><a href="#welcome" class="nav-brand">EQUINOX <span>2027</span></a><p>{{ config.TAGLINE }}</p><p>{{ config.PARTICIPATION_FORMAT }} hackathon hosted by {{ config.HOST_INSTITUTION }}.</p></div><div><h3>Explore</h3><a href="#challenges">Challenges</a><a href="#schedule">Schedule</a><a href="#registration">Registration</a><a href="#faqs">FAQs</a></div><div><h3>Organisers</h3><p>Velocity</p><p>Horizon IoT Club</p><p>International Partnership Office</p><a href="mailto:{{ config.CONTACT_EMAIL }}">{{ config.CONTACT_EMAIL }}</a></div></div><div class="container footer-bottom"><span>&copy; 2027 {{ config.EVENT_NAME }} Organisers. All rights reserved.</span><a href="#contact">Contact</a></div>
+    <div class="container footer-grid"><div><a href="#welcome" class="footer-event-logo" aria-label="EQUINOX 2027 home"><img src="/equinox-wordmark.png" alt="EQUINOX 2027"></a><img class="footer-university-logo" src="/qtm-logo.png" alt="Quantum University"><p>{{ config.TAGLINE }}</p><p>{{ config.PARTICIPATION_FORMAT }} hackathon hosted by {{ config.HOST_INSTITUTION }}.</p></div><div><h3>Explore</h3><a href="#challenges">Challenges</a><a href="#schedule">Schedule</a><a href="#registration">Registration</a><a href="#faqs">FAQs</a></div><div><h3>Organisers</h3><p>Velocity</p><p>Horizon IoT Club</p><p>International Partnership Office</p><a href="mailto:{{ config.CONTACT_EMAIL }}">{{ config.CONTACT_EMAIL }}</a></div></div><div class="container footer-bottom"><span>&copy; 2027 {{ config.EVENT_NAME }} Organisers. All rights reserved.</span><a href="#contact">Contact</a></div>
 </footer>
 <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑</button>
 {% endblock %}
