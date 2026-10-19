@@ -31,12 +31,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="hero-illustration" aria-label="Abstract connected technology illustration" role="img">
-            <svg viewBox="0 0 420 300" aria-hidden="true">
-                <path d="M60 220 150 130l70 55 90-125 50 70" />
-                <circle cx="60" cy="220" r="10" /><circle cx="150" cy="130" r="10" /><circle cx="220" cy="185" r="10" /><circle cx="310" cy="60" r="10" /><circle cx="360" cy="130" r="10" />
-            </svg>
-        </div>
+        <div class="hero-illustration image-placeholder" aria-label="Image placeholder for Build What the Future Needs" role="img">Image placeholder</div>
     </div>
     <div class="container stats">
         <div><strong>{{ config.DURATION }}</strong><span>Build period</span></div>
@@ -48,8 +43,35 @@
 <section id="about-hackathon" class="section-entrance">
     <div class="container narrow">
         <p class="eyebrow">01 / THE PURPOSE</p>
-        <h2 class="section-title">About the Hackathon</h2>
-        <p class="section-intro">EQUINOX 2027 brings people and perspectives together across borders to turn meaningful ideas into practical solutions. Teams will explore real-world challenges through international collaboration, responsible technology, and interdisciplinary learning.</p>
+        <h2 class="section-title">About Equinox 2027</h2>
+        <h3 class="about-subtitle">Where Innovation Meets Impact</h3>
+        <p class="section-intro"><strong>Equinox 2027 is more than a hackathon — it's a global platform for ideas, innovation, and collaboration.</strong></p>
+        <p class="about-copy">Bringing together passionate developers, creative thinkers, researchers, and problem-solvers from across the world, Equinox 2027 aims to transform bold ideas into practical solutions for real-world challenges.</p>
+        <p class="about-copy">Designed to encourage innovation beyond borders, Equinox provides participants with an opportunity to collaborate across disciplines, explore emerging technologies, and develop solutions that can create a meaningful impact on society.</p>
+        <p class="about-copy">From Artificial Intelligence and Cybersecurity to Smart Campus Solutions, Sustainable Development, and Agricultural Innovation, Equinox 2027 welcomes ideas that challenge conventional thinking and shape a better tomorrow.</p>
+        <div class="about-columns">
+            <div class="about-panel">
+                <h3>Our Vision</h3>
+                <p>To create a globally connected innovation ecosystem where students and young innovators can collaborate, experiment, and build technology-driven solutions that address real-world problems.</p>
+            </div>
+            <div class="about-panel">
+                <h3>Our Mission</h3>
+                <ul class="mission-list">
+                    <li><strong>Innovate Without Boundaries:</strong> Encourage creative thinking and technological experimentation.</li>
+                    <li><strong>Collaborate Globally:</strong> Connect students, developers, and innovators from diverse backgrounds.</li>
+                    <li><strong>Solve Real-World Problems:</strong> Turn promising ideas into practical, scalable solutions.</li>
+                    <li><strong>Empower Future Innovators:</strong> Provide a platform for learning, mentorship, networking, and growth.</li>
+                    <li><strong>Create Lasting Impact:</strong> Promote technology that contributes to a smarter, safer, and more sustainable future.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="about-why">
+            <h3>Why Equinox?</h3>
+            <p>At Equinox, innovation goes beyond writing code. It is about identifying problems, challenging assumptions, working together, and creating something meaningful.</p>
+            <p>Whether you are an experienced developer, an aspiring entrepreneur, an AI enthusiast, or a student with an idea worth exploring, Equinox 2027 offers a space to experiment, learn, and push your limits.</p>
+            <p class="about-closing"><strong>One platform. Diverse perspectives. Limitless possibilities.</strong></p>
+            <p>Join us at Equinox 2027 and be part of a community that believes the future is not simply predicted — it is built.</p>
+        </div>
         <div class="feature-list">
             <span>International collaboration</span><span>Real-world problem-solving</span><span>Technical creativity</span><span>Responsible technology</span>
         </div>
@@ -74,7 +96,7 @@
 <section id="how-it-works" class="section-entrance">
     <div class="container">
         <p class="eyebrow">03 / THE JOURNEY</p><h2 class="section-title">How It Works</h2>
-        <div class="steps">
+        <div class="steps checkpoint-list">
             <div><span>01</span><h3>Explore</h3><p>Explore the challenge tracks and find the problem you want to solve.</p></div>
             <div><span>02</span><h3>Register</h3><p>Register through the official Unstop event page.</p></div>
             <div><span>03</span><h3>Complete</h3><p>Follow any required official registration steps.</p></div>
@@ -95,7 +117,7 @@
 </section>
 
 <section id="schedule" class="section-entrance">
-    <div class="container narrow"><p class="eyebrow">05 / THE CALENDAR</p><h2 class="section-title">Event Schedule</h2><div class="timeline">{% for item in config.SCHEDULE %}<div class="timeline-item"><span>{{ item.time }}</span><strong>{{ item.event }}</strong></div>{% endfor %}</div><p class="provisional">All dates and timings are provisional and subject to official announcement.</p></div>
+    <div class="container narrow"><p class="eyebrow">05 / THE CALENDAR</p><h2 class="section-title">Event Schedule</h2><div class="timeline">{% for item in config.SCHEDULE %}<div class="timeline-item"><span>{{ item.time }}</span><i class="timeline-checkpoint" aria-hidden="true"></i><strong>{{ item.event }}</strong></div>{% endfor %}</div><p class="provisional">All dates and timings are provisional and subject to official announcement.</p></div>
 </section>
 
 <section id="about-us" class="section-soft section-entrance">
@@ -103,7 +125,7 @@
 </section>
 
 <section id="registration" class="section-entrance">
-    <div class="container narrow"><p class="eyebrow">07 / JOIN EQUINOX</p><h2 class="section-title">Registration</h2><p class="section-intro">Complete the official steps below. External links are only shown when configured by the organisers.</p><div class="registration-steps">
+    <div class="container narrow"><p class="eyebrow">07 / JOIN EQUINOX</p><h2 class="section-title">Registration</h2><p class="section-intro">Complete the official steps below. External links are only shown when configured by the organisers.</p><div class="registration-steps checkpoint-list">
         <div class="registration-step"><span>01</span><div><h3>Register on Unstop</h3><p>Begin through the official event listing.</p>{% if config.UNSTOP_URL %}<a class="btn btn-primary" href="{{ config.UNSTOP_URL }}" target="_blank" rel="noopener noreferrer">Continue to Unstop</a>{% else %}<p class="notice">The Unstop link will be announced soon.</p>{% endif %}</div></div>
         <div class="registration-step"><span>02</span><div><h3>Follow official instructions</h3><p>Review the instructions provided by the organisers and complete any required follow-up steps.</p></div></div>
         <div class="registration-step"><span>03</span><div><h3>Payment registration, if required</h3><p>Use the official form only if payment registration is required.</p>{% if config.GOOGLE_FORM_URL %}<a class="btn btn-secondary" href="{{ config.GOOGLE_FORM_URL }}" target="_blank" rel="noopener noreferrer">Open Payment Registration Form</a>{% else %}<p class="notice">The payment registration form will be available upon official announcement.</p>{% endif %}</div></div>
