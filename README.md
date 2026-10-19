@@ -3,11 +3,15 @@
 An international 36-hour hybrid hackathon website built with Node.js,
 Express, Nunjucks, HTML5, vanilla CSS, and vanilla JavaScript.
 
+First install Node.js in your laptop 
+
+Then configure it. 
+
 ## Run locally
 
-From the project directory in PowerShell:
+From the project directory in Terminal
 
-```powershell
+```terminal
 npm install
 node server.js
 ```
