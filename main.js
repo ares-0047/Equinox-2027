@@ -49,7 +49,7 @@
         ["Event Schedule", "View provisional milestones", "#schedule"], ["About the Organisers", "Meet Velocity, Horizon IoT Club, and IPO", "#about-us"],
         ["Registration", "Learn how to register", "#registration"], ["FAQs", "Find answers to common questions", "#faqs"],
         ["Contact", "Get in touch with the organisers", "#contact"], ["Quantum University", "Host institution", "#partners"],
-        ["Velocity", "Organiser information", "#about-us"], ["Horizon IoT Club", "Organiser information", "#about-us"], ["IPO", "International Partnership Office", "#about-us"]
+        ["Velocity", "Gaming and Game Development Club", "/clubs/velocity"], ["Horizon IoT Club", "IoT and connected technologies", "/clubs/horizon"], ["IPO", "International Partnership Office", "/clubs/ipo"]
     ];
     function renderResults(query) {
         const matches = searchData.filter(function (item) { return item.join(" ").toLowerCase().includes(query.toLowerCase()); });

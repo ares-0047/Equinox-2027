@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="club-hero section-entrance">
+    <div class="container club-hero-grid">
+        <div>
+            <p class="eyebrow">EQUINOX 2027 / ORGANISER</p>
+            <h1>{{ club.name }}</h1>
+            <p class="club-label">{{ club.label }}</p>
+            <p class="lead">{{ club.intro }}</p>
+            <a class="btn btn-secondary" href="/home#partners">← Back to organisers</a>
+        </div>
+        <div class="image-placeholder club-hero-image" role="img" aria-label="Image placeholder for {{ club.name }}">Image placeholder</div>
+    </div>
+</section>
+
+<section class="section-entrance">
+    <div class="container club-content-grid">
+        <article class="club-copy">
+            <p class="eyebrow">ABOUT THE CLUB</p>
+            <h2>Ideas, people, and possibilities.</h2>
+            {% for paragraph in club.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+        </article>
+        <aside class="club-side-card">
+            <div class="image-placeholder" role="img" aria-label="Picture placeholder for {{ club.name }}">Picture placeholder</div>
+            <p class="eyebrow">FEATURED MOMENTS</p>
+            <p>Use this space for club photographs, project showcases, workshop highlights, or team portraits.</p>
+        </aside>
+    </div>
+</section>
+
+<section class="section-soft section-entrance">
+    <div class="container">
+        <p class="eyebrow">GALLERY</p>
+        <h2 class="section-title">Club highlights</h2>
+        <div class="club-gallery">
+            <div class="image-placeholder" role="img" aria-label="Gallery image placeholder">Image placeholder</div>
+            <div class="image-placeholder" role="img" aria-label="Gallery image placeholder">Image placeholder</div>
+            <div class="image-placeholder" role="img" aria-label="Gallery image placeholder">Image placeholder</div>
+        </div>
+    </div>
+</section>
+{% endblock %}

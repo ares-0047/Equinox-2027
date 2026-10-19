@@ -12,7 +12,7 @@
     </div>
 </section>
 
-<section id="home" class="hero section-entrance">
+<section id="home" class="hero event-section section-entrance">
     <div class="container hero-grid">
         <div>
             <p class="eyebrow">INTERNATIONAL HYBRID HACKATHON</p>
@@ -59,7 +59,7 @@
 <section id="challenges" class="section-soft section-entrance">
     <div class="container">
         <p class="eyebrow">02 / THE BRIEF</p><h2 class="section-title">Challenge Tracks</h2>
-        <div class="card-grid">
+        <div class="card-grid track-grid">
             {% for track in config.TRACKS %}
             <article class="card track-card{% if track.flagship %} flagship{% endif %}">
                 <div class="card-icon" aria-hidden="true">0{{ track.id }}</div>
@@ -87,7 +87,7 @@
     <div class="container">
         <p class="eyebrow">04 / THE NETWORK</p><h2 class="section-title">Partners and Sponsors</h2>
         <div class="partner-layout">
-            <div><h3>Organisers</h3><div class="partner-list">{% for org in config.ORGANISERS %}<div class="partner-card"><strong>{{ org.name }}</strong><span>{{ org.desc }}</span></div>{% endfor %}</div></div>
+            <div><h3>Organisers</h3><div class="partner-list">{% for org in config.ORGANISERS %}<a class="partner-card" href="/clubs/{{ org.slug }}"><strong>{{ org.name }}</strong><span>{{ org.desc }}</span><span class="partner-link">View club details →</span></a>{% endfor %}</div></div>
             <div class="partner-card host-card"><p class="eyebrow">HOST INSTITUTION</p><strong>{{ config.HOST_INSTITUTION }}</strong><span>Roorkee, Uttarakhand, India</span></div>
         </div>
         <div class="open-partnership"><div><h3>Technology, knowledge, and sponsorship opportunities are open.</h3><p>Contact the organisers to explore a partnership.</p></div><a href="#contact" class="btn btn-primary">Become a Partner</a></div>
@@ -99,7 +99,7 @@
 </section>
 
 <section id="about-us" class="section-soft section-entrance">
-    <div class="container"><p class="eyebrow">06 / THE PEOPLE</p><h2 class="section-title">About the Organisers</h2><div class="card-grid organiser-grid">{% for org in config.ORGANISERS %}<article class="card"><h3>{{ org.name }}</h3><p>{{ org.desc }}</p></article>{% endfor %}</div><p class="host-note">Hosted by <strong>{{ config.HOST_INSTITUTION }}</strong>, Roorkee, Uttarakhand, India.</p></div>
+    <div class="container"><p class="eyebrow">06 / THE PEOPLE</p><h2 class="section-title">About the Organisers</h2><div class="card-grid organiser-grid">{% for org in config.ORGANISERS %}<a class="card organiser-card" href="/clubs/{{ org.slug }}"><div class="logo-placeholder" role="img" aria-label="Logo placeholder for {{ org.name }}">Logo</div><h3>{{ org.name }}</h3><p>{{ org.desc }}</p><span class="partner-link">Explore more →</span></a>{% endfor %}</div><p class="host-note">Hosted by <strong>{{ config.HOST_INSTITUTION }}</strong>, Roorkee, Uttarakhand, India.</p></div>
 </section>
 
 <section id="registration" class="section-entrance">
