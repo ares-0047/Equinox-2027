@@ -646,3 +646,97 @@ footer::after { content:""; position:absolute; width:330px; height:330px; right:
 @media (prefers-reduced-motion: reduce) {
     .stage-orbit-outer, .stage-orbit-inner, .stage-orbit-arc { animation: none !important; }
 }
+
+
+/* Keep the event overview's warm grid background; countdown stays plain. */
+.hero.event-section {
+    background-color: var(--color-background);
+    background-image:
+        linear-gradient(rgba(23,23,25,.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23,23,25,.026) 1px, transparent 1px);
+    background-size: 48px 48px;
+}
+
+/* Equinox 2027 countdown — visually aligned with Challenge Tracks cards. */
+.countdown-section {
+    background-color: #F0ECE1;
+    background-image:
+    linear-gradient(rgba(23, 23, 25, .006) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 23, 25, .006) 1px, transparent 1px);
+background-size: 48px 48px;
+    position: relative;
+    isolation: isolate;
+    padding: 68px 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+.countdown-container { text-align: center; }
+.countdown-container > .eyebrow { margin-bottom: 12px; }
+.countdown-title {
+    margin: 0;
+    color: var(--color-text);
+    font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+    letter-spacing: -.045em;
+}
+.countdown-title span { color: var(--color-primary); }
+.countdown-copy { margin: 12px 0 30px; color: var(--color-muted); }
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    width: min(760px, 100%);
+    margin: 0 auto;
+}
+.countdown-unit {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    padding: 24px 12px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-highlight);
+    box-shadow: var(--shadow-sm);
+    transition: border-color .2s ease, transform .2s ease;
+}
+.countdown-unit::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 3px;
+    background: var(--color-primary);
+}
+.countdown-unit:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+}
+.countdown-unit strong {
+    display: block;
+    color: var(--color-navy);
+    font-size: clamp(2rem, 4.5vw, 3.15rem);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.04em;
+}
+.countdown-unit span {
+    display: block;
+    margin-top: 10px;
+    color: var(--color-muted);
+    font-family: var(--tech-font, inherit);
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+.countdown-note { margin: 20px 0 0; color: var(--color-muted); font-size: .8rem; }
+.countdown-finished { color: var(--color-primary); font-weight: 700; }
+@media (max-width: 560px) {
+    .countdown-section { padding: 48px 0; }
+    .countdown-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .countdown-unit { padding: 20px 8px 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .countdown-unit { transition: none; }
+    .countdown-unit:hover { transform: none; }
+}
