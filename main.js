@@ -69,3 +69,49 @@
     window.addEventListener("scroll", function () { backToTop?.classList.toggle("visible", window.scrollY > 600); }, { passive: true });
     backToTop?.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
 }());
+
+
+    // Equinox 2027 event countdown (24 February 2027, midnight IST).
+    const countdown = document.getElementById("event-countdown");
+    if (countdown) {
+        const targetTime = new Date(countdown.getAttribute("data-target")).getTime();
+        const units = {
+            days: countdown.querySelector("[data-countdown-days]"),
+            hours: countdown.querySelector("[data-countdown-hours]"),
+            minutes: countdown.querySelector("[data-countdown-minutes]"),
+            seconds: countdown.querySelector("[data-countdown-seconds]")
+        };
+        let countdownInterval;
+
+        function updateCountdown() {
+            const remaining = targetTime - Date.now();
+            if (!Number.isFinite(targetTime) || remaining <= 0) {
+                Object.keys(units).forEach(function (unit) {
+                    if (units[unit]) units[unit].textContent = unit === "days" ? "0" : "00";
+                });
+                const note = countdown.parentElement.querySelector(".countdown-note");
+                if (note) {
+                    note.textContent = "Equinox 2027 is here! Check the official event updates.";
+                    note.classList.add("countdown-finished");
+                }
+                if (countdownInterval) window.clearInterval(countdownInterval);
+                return;
+            }
+
+            const seconds = Math.floor(remaining / 1000);
+            const values = {
+                days: Math.floor(seconds / 86400),
+                hours: Math.floor((seconds % 86400) / 3600),
+                minutes: Math.floor((seconds % 3600) / 60),
+                seconds: seconds % 60
+            };
+            Object.keys(units).forEach(function (unit) {
+                if (units[unit]) units[unit].textContent = unit === "days"
+                    ? String(values[unit])
+                    : String(values[unit]).padStart(2, "0");
+            });
+        }
+
+        updateCountdown();
+        if (targetTime > Date.now()) countdownInterval = window.setInterval(updateCountdown, 1000);
+    }
