@@ -1,17 +1,17 @@
 module.exports = {
     EVENT_NAME: "EQUINOX 2027",
     TAGLINE: "Ideas Without Borders. Innovation Without Limits.",
-    DATE: "22 February 2027 (Tentative)",
+    DESCRIPTION: "EQUINOX 2027 is a 36-hour international hybrid hackathon hosted by Quantum University in Roorkee, India, bringing together innovators to build solutions for real-world challenges.",
+    KEYWORDS: "EQUINOX 2027, international hackathon, hybrid hackathon, Quantum University hackathon, student innovation, IoT, artificial intelligence, cybersecurity, sustainability",
+    DATE: "24 February 2027 (Tentative)",
     DURATION: "36 hours",
     VENUE: "Shyamji Auditorium, Quantum University, Roorkee, Uttarakhand, India",
     PARTICIPATION_FORMAT: "Hybrid (On-campus & International Online)",
-    EXPECTED_PARTICIPANTS: "~450 Participants",
-    EXPECTED_TEAMS: "~80 Teams",
     HOST_INSTITUTION: "Quantum University",
     
     ORGANISERS: [
-        {name: "Velocity", slug: "velocity", desc: "Quantum University Gaming and Game Development Club."},
         {name: "Horizon IoT Club", slug: "horizon", desc: "Focused on connected technologies, IoT, and innovation."},
+        {name: "Velocity", slug: "velocity", desc: "Quantum University Gaming and Game Development Club."},
         {name: "International Partnership Office (IPO)", slug: "ipo", desc: "Quantum University's international collaboration and partnership office."}
     ],
 
@@ -49,7 +49,6 @@ module.exports = {
     },
     
     CONTACT_EMAIL: "velocityclub@quantumuniversity.edu.in",
-    CONTACT_PHONE: "+91 91421 84950",
     UNSTOP_URL: "",
     GOOGLE_FORM_URL: "",
     PARTNERSHIP_URL: "",

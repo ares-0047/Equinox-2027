@@ -592,7 +592,7 @@ footer::after { content:""; position:absolute; width:330px; height:330px; right:
 }
 .venue-campus-image {
     position: absolute;
-    z-index: -1;
+    z-index: 0;
     inset: 0 auto 0 0;
     width: 58%;
     height: 100%;
@@ -665,12 +665,77 @@ footer::after { content:""; position:absolute; width:330px; height:330px; right:
     linear-gradient(90deg, rgba(23, 23, 25, .006) 1px, transparent 1px);
 background-size: 48px 48px;
     position: relative;
+    overflow: hidden;
     isolation: isolate;
     padding: 68px 0;
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
-.countdown-container { text-align: center; }
+.countdown-orbit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    border: 2px solid rgba(217, 48, 50, .5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+.countdown-orbit-outer {
+    width: min(50vw, 460px);
+    aspect-ratio: 1;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%) rotate(-18deg);
+    border-color: rgba(217, 48, 50, .5) rgba(217, 48, 50, .5) transparent rgba(217, 48, 50, .5);
+    animation: countdown-orbit-spin 24s linear infinite;
+}
+.countdown-orbit-inner {
+    width: min(35vw, 315px);
+    aspect-ratio: 1;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%) rotate(28deg);
+    border-color: rgba(52, 34, 57, .42) transparent rgba(52, 34, 57, .42) rgba(52, 34, 57, .42);
+    animation: countdown-orbit-spin-reverse 18s linear infinite;
+}
+.countdown-orbit-middle {
+    width: min(43vw, 390px);
+    aspect-ratio: 1;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%) rotate(12deg);
+    border-color: transparent rgba(217, 48, 50, .38) rgba(217, 48, 50, .38) rgba(217, 48, 50, .38);
+    animation: countdown-orbit-spin-reverse 21s linear infinite;
+}
+.countdown-orbit-core {
+    width: min(29vw, 260px);
+    aspect-ratio: 1;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%) rotate(-32deg);
+    border-color: rgba(52, 34, 57, .34) rgba(52, 34, 57, .34) rgba(52, 34, 57, .34) transparent;
+    animation: countdown-orbit-spin 15s linear infinite;
+}
+.countdown-axis {
+    position: absolute;
+    left: 50%;
+    top: 8%;
+    bottom: 8%;
+    width: 1px;
+    background: linear-gradient(transparent, rgba(217, 48, 50, .3), transparent);
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes countdown-orbit-spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes countdown-orbit-spin-reverse {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+.countdown-container { position: relative; z-index: 1; text-align: center; }
 .countdown-container > .eyebrow { margin-bottom: 12px; }
 .countdown-title {
     margin: 0;
@@ -692,7 +757,7 @@ background-size: 48px 48px;
     min-width: 0;
     overflow: hidden;
     padding: 24px 12px 20px;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-primary);
     border-radius: 8px;
     background: var(--color-highlight);
     box-shadow: var(--shadow-sm);
@@ -739,4 +804,5 @@ background-size: 48px 48px;
 @media (prefers-reduced-motion: reduce) {
     .countdown-unit { transition: none; }
     .countdown-unit:hover { transform: none; }
+    .countdown-orbit-outer, .countdown-orbit-middle, .countdown-orbit-inner, .countdown-orbit-core { animation: none; }
 }
