@@ -4,6 +4,7 @@ const config = require('./config');
 
 const app = express();
 const port = process.env.PORT || 3000;
+app.set('trust proxy', true);
 
 // Configure Nunjucks to look for HTML files in the current folder (flat structure)
 const env = nunjucks.configure(__dirname, {
@@ -33,12 +34,28 @@ app.use(express.static(__dirname));
 // Inject config variables into every page
 app.use((req, res, next) => {
     res.locals.config = config;
+    const protocol = req.get('x-forwarded-proto') || req.protocol;
+    res.locals.siteUrl = `${protocol}://${req.get('host')}`;
+    res.locals.pagePath = req.path;
     next();
 });
 
 // Routes
 // Keep the root URL as the primary continuous-scroll experience.
 app.get('/', (req, res) => res.redirect('/home'));
+app.get('/robots.txt', (req, res) => {
+    res.type('text/plain').send([
+        'User-agent: *',
+        'Allow: /',
+        'Disallow: /contact',
+        `Sitemap: ${res.locals.siteUrl}/sitemap.xml`
+    ].join('\n'));
+});
+app.get('/sitemap.xml', (req, res) => {
+    const urls = ['/', '/home', '/register'].concat(Object.keys(config.CLUBS).map((slug) => `/clubs/${slug}`));
+    const body = urls.map((path) => `    <url><loc>${res.locals.siteUrl}${path}</loc></url>`).join('\n');
+    res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>`);
+});
 app.get('/home', (req, res) => res.render('home.html'));
 app.get('/register', (req, res) => res.render('register.html'));
 app.get('/clubs/:slug', (req, res) => {
@@ -61,8 +78,14 @@ app.post('/contact', (req, res) => {
 });
 
 // Error Pages
-app.use((req, res) => res.status(404).render('404.html'));
-app.use((err, req, res, next) => res.status(500).render('500.html'));
+app.use((req, res) => {
+    res.locals.noIndex = true;
+    return res.status(404).render('404.html');
+});
+app.use((err, req, res, next) => {
+    res.locals.noIndex = true;
+    return res.status(500).render('500.html');
+});
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

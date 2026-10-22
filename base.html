@@ -3,9 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ config.EVENT_NAME }} — {{ config.TAGLINE }}">
-    <title>{{ config.EVENT_NAME }} | {{ config.TAGLINE }}</title>
+    <meta name="description" content="{% if club %}{{ club.intro }}{% elif pagePath == '/register' %}Register for {{ config.EVENT_NAME }}, a 36-hour international hybrid hackathon hosted by {{ config.HOST_INSTITUTION }}.{% else %}{{ config.DESCRIPTION }}{% endif %}">
+    <meta name="keywords" content="{{ config.KEYWORDS }}">
+    <meta name="author" content="{{ config.HOST_INSTITUTION }}">
+    <meta name="robots" content="{% if noIndex %}noindex, nofollow{% else %}index, follow{% endif %}">
+    <link rel="canonical" href="{{ siteUrl }}{{ pagePath }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ config.EVENT_NAME }}">
+    <meta property="og:title" content="{% if club %}{{ club.name }} | {{ config.EVENT_NAME }}{% elif pagePath == '/register' %}Register for {{ config.EVENT_NAME }}{% else %}{{ config.EVENT_NAME }} | International Hybrid Hackathon{% endif %}">
+    <meta property="og:description" content="{% if club %}{{ club.intro }}{% else %}{{ config.DESCRIPTION }}{% endif %}">
+    <meta property="og:url" content="{{ siteUrl }}{{ pagePath }}">
+    <meta property="og:image" content="{{ siteUrl }}/equinox-header-logo.png">
+    <meta property="og:image:alt" content="EQUINOX 2027 international hackathon">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if club %}{{ club.name }} | {{ config.EVENT_NAME }}{% elif pagePath == '/register' %}Register for {{ config.EVENT_NAME }}{% else %}{{ config.EVENT_NAME }} | International Hybrid Hackathon{% endif %}">
+    <meta name="twitter:description" content="{% if club %}{{ club.intro }}{% else %}{{ config.DESCRIPTION }}{% endif %}">
+    <meta name="twitter:image" content="{{ siteUrl }}/equinox-header-logo.png">
+    <title>{{ config.EVENT_NAME }} | International Hybrid Hackathon</title>
     <meta name="theme-color" content="#f4f0e7">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Event",
+                "@id": "{{ siteUrl }}/home#event",
+                "name": "{{ config.EVENT_NAME }}",
+                "description": "{{ config.DESCRIPTION }}",
+                "url": "{{ siteUrl }}/home",
+                "image": ["{{ siteUrl }}/equinox-header-logo.png"],
+                "startDate": "2027-02-24T00:00:00+05:30",
+                "endDate": "2027-02-25T12:00:00+05:30",
+                "eventStatus": "https://schema.org/EventScheduled",
+                "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+                "location": {
+                    "@type": "Place",
+                    "name": "Shyamji Auditorium, Quantum University",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Quantum University",
+                        "addressLocality": "Roorkee",
+                        "addressRegion": "Uttarakhand",
+                        "addressCountry": "IN"
+                    }
+                },
+                "organizer": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "{{ config.HOST_INSTITUTION }}",
+                    "url": "{{ siteUrl }}"
+                }
+            },
+            {
+                "@type": "Organization",
+                "@id": "{{ siteUrl }}/#organization",
+                "name": "{{ config.HOST_INSTITUTION }}",
+                "url": "{{ siteUrl }}"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "{{ siteUrl }}/#website",
+                "name": "{{ config.EVENT_NAME }}",
+                "url": "{{ siteUrl }}",
+                "description": "{{ config.DESCRIPTION }}"
+            }
+        ]
+    }
+    </script>
     <link rel="preload" as="image" href="/equinox-header-logo.png">
     <link rel="preload" as="image" href="/qtm-logo.png">
     <link rel="preload" as="image" href="/qtm-logo.png">
