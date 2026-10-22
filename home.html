@@ -71,6 +71,16 @@
     <span class="countdown-orbit countdown-orbit-inner" aria-hidden="true"></span>
     <span class="countdown-orbit countdown-orbit-core" aria-hidden="true"></span>
     <span class="countdown-axis" aria-hidden="true"></span>
+    <div class="countdown-rail countdown-rail-left" aria-hidden="true">
+        <span class="countdown-rail-label">T - 124D</span>
+        <span class="countdown-rail-line"></span>
+        <span class="countdown-rail-dot"></span>
+    </div>
+    <div class="countdown-rail countdown-rail-right" aria-hidden="true">
+        <span class="countdown-rail-dot"></span>
+        <span class="countdown-rail-line"></span>
+        <span class="countdown-rail-label">EQX / 27</span>
+    </div>
     <div class="container countdown-container">
         <p class="eyebrow">EQUINOX 2027 / THE COUNTDOWN</p>
         <h2 id="countdown-title" class="countdown-title">The future is getting closer<span>.</span></h2>
@@ -208,7 +218,7 @@
 </section>
 
 <footer id="footer">
-    <div class="container footer-grid"><div><a href="#welcome" class="footer-event-logo" aria-label="EQUINOX 2027 home"><img src="/equinox-wordmark.png" alt="EQUINOX 2027"></a><img class="footer-university-logo" src="/qtm-logo.png" alt="Quantum University"><p>{{ config.TAGLINE }}</p><p>{{ config.PARTICIPATION_FORMAT }} hackathon hosted by {{ config.HOST_INSTITUTION }}.</p></div><div><h3>Explore</h3><a href="#challenges">Challenges</a><a href="#schedule">Schedule</a><a href="#registration">Registration</a><a href="#faqs">FAQs</a></div><div><h3>Organisers</h3><a href="/home#about-velocity">Velocity</a><a href="/home#about-horizon">Horizon IoT Club</a><a href="/home#about-ipo">International Partnership Office</a><a href="mailto:{{ config.CONTACT_EMAIL }}">{{ config.CONTACT_EMAIL }}</a></div></div><div class="container footer-bottom"><span>&copy; 2027 {{ config.EVENT_NAME }} Organisers. All rights reserved.</span><a href="#contact">Contact</a></div>
+    <div class="container footer-grid"><div><a href="#welcome" class="footer-event-logo" aria-label="EQUINOX 2027 home"><img src="/equinox-wordmark.png" alt="EQUINOX 2027"></a><img class="footer-university-logo" src="/qtm-logo.png" alt="Quantum University"><p>{{ config.TAGLINE }}</p><p>{{ config.PARTICIPATION_FORMAT }} hackathon hosted by {{ config.HOST_INSTITUTION }}.</p></div><div><h3>Explore</h3><a href="#challenges">Challenges</a><a href="#schedule">Schedule</a><a href="#registration">Registration</a><a href="#faqs">FAQs</a></div><div><h3>Organisers</h3><a href="/home#about-velocity">Velocity</a><a href="/home#about-horizon">Horizon IoT Club</a><a href="/home#about-ipo">International Partnership Office</a><a href="mailto:{{ config.CONTACT_EMAIL }}">{{ config.CONTACT_EMAIL }}</a></div></div>    <div class="container footer-bottom"><span>&copy; 2027 {{ config.EVENT_NAME }} Organisers. All rights reserved.</span><a class="btn btn-primary footer-contact-button" href="#contact">Contact</a></div>
 </footer>
 <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑</button>
 {% endblock %}

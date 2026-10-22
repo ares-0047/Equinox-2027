@@ -254,6 +254,18 @@ footer::before { content: ""; position: absolute; width: 330px; height: 330px; r
 .search-overlay { background: rgba(23,23,25,.68); backdrop-filter: blur(8px); }
 .search-container { border: 1px solid var(--color-border); box-shadow: 0 25px 80px rgba(0,0,0,.22); }
 .back-to-top { border-radius: 2px; box-shadow: 4px 4px 0 rgba(52,34,57,.2); }
+footer .footer-bottom > a.footer-contact-button { margin-right: 64px; }
+footer .footer-bottom {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+footer .footer-bottom > a.footer-contact-button {
+    margin-right: 0;
+}
+@media (max-width: 850px) {
+    .countdown-rail { display: none; }
+}
 
 @media (max-width: 850px) {
     .container { width: min(100% - 40px, 1240px); }
@@ -681,6 +693,45 @@ background-size: 48px 48px;
     pointer-events: none;
     z-index: 0;
 }
+.countdown-rail {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    width: min(18vw, 210px);
+    color: var(--color-muted);
+    font-family: var(--tech-font, ui-monospace, monospace);
+    font-size: .58rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.countdown-rail-left { left: max(24px, calc(50% - 580px)); }
+.countdown-rail-right {
+    right: max(24px, calc(50% - 580px));
+    justify-content: flex-end;
+}
+.countdown-rail-line {
+    height: 1px;
+    flex: 1;
+    margin: 0 10px;
+    background: linear-gradient(90deg, rgba(217,48,50,.55), rgba(52,34,57,.15));
+}
+.countdown-rail-right .countdown-rail-line {
+    background: linear-gradient(90deg, rgba(52,34,57,.15), rgba(217,48,50,.55));
+}
+.countdown-rail-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    background: var(--color-background-soft);
+    box-shadow: 0 0 0 4px rgba(217,48,50,.08);
+}
 .countdown-orbit-outer {
     width: min(50vw, 460px);
     aspect-ratio: 1;
@@ -798,6 +849,7 @@ background-size: 48px 48px;
 .countdown-finished { color: var(--color-primary); font-weight: 700; }
 @media (max-width: 560px) {
     .countdown-section { padding: 48px 0; }
+    .countdown-rail { display: none; }
     .countdown-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     .countdown-unit { padding: 20px 8px 17px; }
 }
