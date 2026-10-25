@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Network | EQUINOX 2027</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="network-page">
+    <main class="network-experience" aria-labelledby="network-title">
+        <div class="network-launch-loader" id="network-launch-loader" aria-live="polite">
+            <div class="network-loader-orbit network-loader-orbit-one"></div>
+            <div class="network-loader-orbit network-loader-orbit-two"></div>
+            <div class="network-loader-core"><span></span><span></span><span></span></div>
+            <p class="network-loader-kicker">EQUINOX / GLOBAL SYSTEM</p>
+            <p class="network-loader-title">Connecting<br><strong>Institutions</strong></p>
+            <div class="network-loader-progress"><span></span></div>
+            <p class="network-loader-status">BUILDING GLOBAL GRID <b>•••</b></p>
+        </div>
+        <div class="network-grid-lines" aria-hidden="true"></div>
+        <div class="network-topbar">
+            <a class="network-back" href="/home#global-network">← Return to Equinox</a>
+            <span class="network-code">EQX / GLOBAL NETWORK</span>
+        </div>
+        <header class="network-header">
+            <div>
+                <p class="network-eyebrow">BEYOND BORDERS / 2027</p>
+                <h1 id="network-title">International<br><span>Institutions</span></h1>
+                <p>Connecting minds, institutions, and innovators across borders.</p>
+            </div>
+        </header>
+        <section class="network-map-shell" aria-label="Interactive world map">
+            <div id="network-map" class="network-map">
+                <div class="network-map-loading">INITIALISING GLOBAL GRID<span>•••</span></div>
+            </div>
+            <div class="network-map-caption"><span>GLOBAL INSTITUTIONS</span><span id="network-coordinates">00° 00' N&nbsp;&nbsp;·&nbsp;&nbsp;00° 00' E</span></div>
+        </section>
+        <p class="network-footer-note">EQUINOX 2027 <span>·</span> INTERNATIONAL INSTITUTIONS</p>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+    <script>
+        (function () {
+            "use strict";
+            const institutions = [];
+            const map = document.getElementById("network-map");
+            const mapLoading = map.querySelector(".network-map-loading");
+            const mapWidth = 1200;
+            const mapHeight = 620;
+            const projection = d3.geoNaturalEarth1().fitSize([mapWidth, mapHeight], { type: "Sphere" });
+            const path = d3.geoPath(projection);
+
+            function renderInstitutions(svg) {
+                const markers = svg.append("g").attr("class", "network-markers");
+                institutions.forEach(function (institution, index) {
+                    const point = projection([institution.longitude, institution.latitude]);
+                    if (!point) return;
+                    const marker = markers.append("g")
+                        .attr("class", "network-marker")
+                        .attr("transform", "translate(" + point[0] + "," + point[1] + ")")
+                        .attr("tabindex", "0")
+                        .attr("role", "button")
+                        .attr("aria-label", institution.name + ", " + institution.country);
+                    marker.append("circle").attr("class", "network-marker-pulse pulse-one");
+                    marker.append("circle").attr("class", "network-marker-pulse pulse-two");
+                    marker.append("circle").attr("class", "network-marker-core");
+                    marker.append("text").attr("class", "network-marker-label").attr("x", 12).attr("y", 4).text(institution.name);
+                    marker.selectAll(".network-marker-pulse").style("animation-delay", "-" + (index * 0.8) + "s");
+                });
+            }
+
+            fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+                .then(function (response) {
+                    if (!response.ok) throw new Error("World map data could not be loaded.");
+                    return response.json();
+                })
+                .then(function (world) {
+                    const svg = d3.select(map).append("svg")
+                        .attr("viewBox", "0 0 " + mapWidth + " " + mapHeight)
+                        .attr("role", "img")
+                        .attr("aria-label", "World map showing Equinox 2027 international institutions");
+                    svg.append("path").datum({ type: "Sphere" }).attr("class", "network-globe").attr("d", path);
+                    const countries = topojson.feature(world, world.objects.countries).features;
+                    svg.append("g").attr("class", "network-country-layer").selectAll("path")
+                        .data(countries).join("path").attr("class", "network-country").attr("d", path);
+                    const borders = topojson.mesh(world, world.objects.countries, function (a, b) { return a !== b; });
+                    svg.append("path").datum(borders).attr("class", "network-border-base").attr("d", path);
+                    svg.append("path").datum(borders).attr("class", "network-border-glow").attr("d", path);
+                    svg.append("path").datum(borders).attr("class", "network-border-scan").attr("d", path);
+                    renderInstitutions(svg);
+                    mapLoading.remove();
+                    document.getElementById("network-launch-loader").classList.add("network-launch-loader-done");
+                })
+                .catch(function (error) {
+                    mapLoading.textContent = "GLOBAL GRID UNAVAILABLE";
+                    mapLoading.setAttribute("title", error.message);
+                    document.getElementById("network-launch-loader").classList.add("network-launch-loader-done");
+                });
+        }());
+    </script>
+</body>
+</html>
