@@ -52,13 +52,93 @@ module.exports = {
     UNSTOP_URL: "",
     GOOGLE_FORM_URL: "",
     PARTNERSHIP_URL: "",
-    
+
+    SPONSORS: [
+        { name: "GeeksforGeeks", url: "https://www.geeksforgeeks.org/courses/Java-backend-live?source=google&medium=cpc&device=c&keyword=geeksforgeeks%20java&matchtype=b&campaignid=10445850397&adgroup=175940308275&gad_source=1&gad_campaignid=10445850397&gbraid=0AAAAAC9yBkBboDY3dx3yvMwi4u6C5wH82&gclid=Cj0KCQjwrvHWBhDKARIsABmp7h2cdVICSc2WYUS8QU_DV1_lfT-PTfL9VxzgY_u7FZ6tHD0vvhP5g5QaAsWvEALw_wcB", logo: "/sponsor-geeksforgeeks.svg", alt: "GeeksforGeeks — A computer science portal" },
+        { name: "Unstop", url: "https://unstop.com/", logo: "/sponsor-unstop.svg", alt: "Unstop — Competitions and internships platform" },
+        { name: "CodeCrafters", url: "https://codecrafters.io/", logo: "/sponsor-codecrafters.svg", alt: "CodeCrafters — Build your own" },
+        { name: "TruScholar", url: "https://www.truscholar.io/", logo: "/sponsor-truscholar.svg", alt: "TruScholar — Digital credentials" },
+        { name: "Osen", url: "https://osen.live/", logo: "/sponsor-osen.svg", alt: "Osen — Live platform" },
+        { name: "Fueler", url: "https://fueler.io/", logo: "/sponsor-fueler.svg", alt: "Fueler — Proof of work" }
+    ],
+
     TRACKS: [
-        { id: 1, title: "Edge Intelligence and Industrial IoT", desc: "Build intelligent systems using connected devices, edge computing, sensors, and real-time data.", icon: "cpu" },
-        { id: 2, title: "Digital Twins and Serious Games", desc: "Develop interactive simulations, digital replicas, and game-based solutions for practical applications.", icon: "monitor" },
-        { id: 3, title: "Cybersecurity and Post-Quantum Security", desc: "Explore secure systems, threat detection, privacy, and emerging approaches to cybersecurity.", icon: "shield" },
-        { id: 4, title: "Public Technology and Digital Governance", desc: "Develop accessible digital solutions that improve public services, transparency, and civic participation.", icon: "users" },
-        { id: 5, title: "Sustainability and SDG Innovation", desc: "Create technology-driven solutions supporting sustainability, resource efficiency, and the UN SDGs.", icon: "globe", flagship: true }
+        {
+            id: 1,
+            title: "Edge Intelligence and Industrial IoT",
+            shortTitle: "Industrial IoT",
+            desc: "Build intelligent distributed systems combining low-power edge nodes, sensor telemetries, and autonomous real-time processing.",
+            icon: "cpu",
+            image: "/track-01-iot.jpg",
+            highlights: [
+                "Edge sensor pipelines & real-time telemetry",
+                "Industrial anomaly detection on edge microcontrollers",
+                "Ultra-low latency device-to-cloud mesh protocols",
+                "Autonomous factory & infrastructure resilience"
+            ],
+            tags: ["MQTT", "TinyML", "ESP32 / Raspberry Pi", "SCADA"]
+        },
+        {
+            id: 2,
+            title: "Digital Twins and Serious Games",
+            shortTitle: "Digital Twins",
+            desc: "Develop interactive 3D simulations, real-world digital replicas, and game-engine environments for practical testing and operations.",
+            icon: "monitor",
+            image: "/track-02-twins.jpg",
+            highlights: [
+                "Real-time 3D physical simulation & state mirroring",
+                "Serious game mechanics for industrial workforce training",
+                "Bi-directional spatial telemetry synchronization",
+                "Predictive maintenance through synthetic operational stress"
+            ],
+            tags: ["Three.js / WebGL", "Unity / Unreal", "Physics Engine", "Telemetry"]
+        },
+        {
+            id: 3,
+            title: "Cybersecurity and Post-Quantum Security",
+            shortTitle: "Cybersecurity",
+            desc: "Design tamper-proof architectures, post-quantum cryptographic schemes, zero-trust models, and intelligent threat defense layers.",
+            icon: "shield",
+            image: "/track-03-cyber.jpg",
+            highlights: [
+                "Post-quantum cryptographic key exchange primitives",
+                "Zero-trust continuous verification architectures",
+                "Hardware enclave computing & verifiable proofs",
+                "Automated anomaly mitigation & tamper-proof logging"
+            ],
+            tags: ["Post-Quantum Cryptography", "Zero-Trust", "WebAssembly", "Enclave"]
+        },
+        {
+            id: 4,
+            title: "Public Technology and Digital Governance",
+            shortTitle: "Digital Governance",
+            desc: "Develop accessible civic technology, verifiable public records, and transparent digital platforms that improve community services.",
+            icon: "users",
+            image: "/track-04-gov.jpg",
+            highlights: [
+                "Verifiable citizen credentials & decentralized identity",
+                "Transparent municipal resource allocation dashboards",
+                "Open data APIs with strict privacy guarantees",
+                "Accessible multimodal civic engagement interfaces"
+            ],
+            tags: ["Decentralized ID", "Open Data APIs", "CivicTech", "WCAG 2.2"]
+        },
+        {
+            id: 5,
+            title: "Sustainability and SDG Innovation",
+            shortTitle: "SDG Innovation",
+            desc: "Create technology-driven solutions addressing clean energy, environmental sensing, circular resources, and the UN Sustainable Development Goals.",
+            icon: "globe",
+            flagship: true,
+            image: "/track-05-sdg.jpg",
+            highlights: [
+                "Renewable microgrid load balancing & energy optimization",
+                "Distributed environmental telemetry & air/water monitoring",
+                "Circular economy asset lifecycle tracking",
+                "Quantitative UN Sustainable Development Goal metrics"
+            ],
+            tags: ["Smart Grid", "Carbon Telemetry", "UN SDGs", "Resource Efficiency"]
+        }
     ],
     
     SCHEDULE: [

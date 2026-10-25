@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="50" viewBox="0 0 240 50" fill="none">
+  <g transform="translate(4, 10)">
+    <g transform="scale(0.85)">
+      <path d="M59.077 13.628H34.67a9.748 9.748 0 0 1 17.129-5.146l3.55-3.57a14.77 14.77 0 0 0-25.724 8.716h-.085a14.77 14.77 0 0 0-25.724-8.716l3.55 3.57a9.748 9.748 0 0 1 17.129 5.146H.087q-.043.565-.044 1.141a14.771 14.771 0 0 0 29.149 3.383h.778a14.769 14.769 0 0 0 29.149-3.383q-.042-.578-.086-1.141ZM14.813 24.517a9.749 9.749 0 0 1-9.151-6.385h18.3a9.75 9.75 0 0 1-9.149 6.385Zm29.538 0a9.75 9.75 0 0 1-9.152-6.385h18.3a9.75 9.75 0 0 1-9.148 6.385Z" fill="#2F8D46"/>
+    </g>
+    <text x="62" y="19" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="17" font-weight="800" fill="#2F8D46" letter-spacing="-0.02em">GeeksforGeeks</text>
+    <text x="63" y="31" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="7.5" font-weight="700" fill="#6B7280" letter-spacing="0.12em">A COMPUTER SCIENCE PORTAL</text>
+  </g>
+</svg>
