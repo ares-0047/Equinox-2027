@@ -44,7 +44,7 @@
                 <span class="detail-footnote">TENTATIVE SCHEDULE</span>
             </article>
             <article class="event-detail-card venue-card">
-                <img class="venue-campus-image" src="/quantum-campus.webp" alt="Quantum University campus building" loading="lazy">
+                <img class="venue-campus-image" src="/quantum-campus.webp" alt="Quantum University campus building">
                 <div class="venue-copy">
                     <span class="detail-index">02 / WHERE</span>
                     <span class="detail-symbol venue-symbol" aria-hidden="true">◎</span>
@@ -133,21 +133,107 @@
     </div>
 </section>
 
-<section id="challenges" class="section-soft section-entrance">
+<section id="challenges" class="challenge-deck-section section-soft section-entrance">
+    <div class="container challenge-deck-header">
+        <div class="challenge-header-lockup">
+            <p class="eyebrow">02 / THE BRIEF</p>
+            <h2 class="section-title">Challenge Tracks</h2>
+            <p class="challenge-subtitle">Five domains. Limitless possibilities. Build solutions engineered for real-world impact.</p>
+        </div>
+        <div class="challenge-header-badge">
+            <span class="challenge-badge-count">5 OFFICIAL DOMAINS</span>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Tab Bar (Inspired by Video Project 5) -->
+    <div class="deck-tabs-wrapper">
+        <div class="container">
+            <nav class="deck-tabs-nav" aria-label="Challenge Tracks Tabs">
+                {% for track in config.TRACKS %}
+                <button type="button" class="deck-tab{% if loop.first %} is-active{% endif %}" data-target="track-card-{{ track.id }}" aria-label="View Track 0{{ track.id }}: {{ track.shortTitle or track.title }}">
+                    <span class="deck-tab__num">0{{ track.id }}</span>
+                    <span class="deck-tab__name">{{ track.shortTitle or track.title }}</span>
+                    {% if track.flagship %}
+                    <span class="deck-tab__flagship-star" aria-hidden="true" title="Flagship Track">★</span>
+                    {% endif %}
+                </button>
+                {% endfor %}
+            </nav>
+        </div>
+    </div>
+
+    <!-- Stacking Card Deck Container (Inspired by Video Project 5) -->
     <div class="container">
-        <p class="eyebrow">02 / THE BRIEF</p><h2 class="section-title">Challenge Tracks</h2>
-        <div class="card-grid track-grid">
+        <div class="deck-stack" id="deck-stack">
             {% for track in config.TRACKS %}
-            <article class="card track-card{% if track.flagship %} flagship{% endif %}">
-                <div class="track-card-top"><span class="track-number">0{{ track.id }}</span><span class="track-icon-art" aria-hidden="true">
-                    {% if track.icon == "cpu" %}<svg viewBox="0 0 48 48" fill="none"><rect x="12" y="12" width="24" height="24" rx="3"/><rect x="19" y="19" width="10" height="10" rx="1"/><path d="M18 4v8M30 4v8M18 36v8M30 36v8M4 18h8M4 30h8M36 18h8M36 30h8"/></svg>
-                    {% elif track.icon == "monitor" %}<svg viewBox="0 0 48 48" fill="none"><rect x="5" y="7" width="38" height="27" rx="2"/><path d="M17 42h14M24 34v8M15 25l6-7 5 4 7-8"/></svg>
-                    {% elif track.icon == "shield" %}<svg viewBox="0 0 48 48" fill="none"><path d="M24 4 40 10v12c0 10-7 17-16 22C15 39 8 32 8 22V10L24 4Z"/><path d="m17 24 5 5 10-11"/></svg>
-                    {% elif track.icon == "users" %}<svg viewBox="0 0 48 48" fill="none"><circle cx="18" cy="16" r="7"/><path d="M5 40v-4c0-6 5-10 13-10s13 4 13 10v4M31 10a7 7 0 0 1 0 13M35 27c5 1 8 4 8 9v4"/></svg>
-                    {% else %}<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="19"/><path d="M5 24h38M24 5c6 6 9 12 9 19s-3 13-9 19c-6-6-9-12-9-19s3-13 9-19Z"/><path d="M10 12h28M10 36h28"/></svg>{% endif %}
-                </span></div>
-                <div><h3>{{ track.title }}</h3>{% if track.flagship %}<span class="flagship-badge">Flagship challenge</span>{% endif %}</div>
-                <p>{{ track.desc }}</p>
+            <article class="deck-card{% if track.flagship %} deck-card--flagship{% endif %}" id="track-card-{{ track.id }}" data-card-index="{{ loop.index0 }}" style="--card-index: {{ loop.index0 }};">
+                <div class="deck-card__grid">
+                    <!-- Left Column: Track Info, Focus Areas, Registration Action -->
+                    <div class="deck-card__info">
+                        <div class="deck-card__meta">
+                            <span class="deck-card__sys-tag">EQX-27 // TRACK-0{{ track.id }}</span>
+                            {% if track.flagship %}
+                            <span class="deck-flagship-pill">★ FLAGSHIP TRACK</span>
+                            {% else %}
+                            <span class="deck-status-pill">36H BUILD</span>
+                            {% endif %}
+                        </div>
+
+                        <h3 class="deck-card__title">{{ track.title }}</h3>
+                        <p class="deck-card__desc">{{ track.desc }}</p>
+
+                        <div class="deck-checklist-wrap">
+                            <span class="deck-checklist-title">Key Focus Areas:</span>
+                            <ul class="deck-checklist">
+                                {% for hl in track.highlights %}
+                                <li>
+                                    <span class="deck-check-icon" aria-hidden="true">✓</span>
+                                    <span>{{ hl }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="deck-card__action">
+                            <a href="#registration" class="btn btn-primary deck-cta-btn">
+                                <span>Register for Track 0{{ track.id }}</span>
+                                <span class="cta-arrow" aria-hidden="true">→</span>
+                            </a>
+                            <span class="deck-domain-note">{{ track.shortTitle or track.title }} Domain</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Window frame with terminal bar, illustration & tags -->
+                    <div class="deck-card__visual">
+                        <div class="deck-visual-frame">
+                            <div class="deck-visual-header">
+                                <div class="deck-window-dots" aria-hidden="true">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <span class="deck-window-title">SYSTEM MATRIX // TRACK-0{{ track.id }}</span>
+                                <span class="deck-window-status">ONLINE</span>
+                            </div>
+
+                            <div class="deck-visual-media">
+                                <img src="{{ track.image }}" alt="{{ track.title }} technical illustration">
+                                <div class="deck-visual-overlay"></div>
+                                <div class="deck-visual-badge">
+                                    <span class="deck-visual-num">0{{ track.id }}</span>
+                                    <span class="deck-visual-name">{{ track.shortTitle or track.title }}</span>
+                                </div>
+                            </div>
+
+                            <div class="deck-visual-footer">
+                                <span class="deck-tags-label">Technologies:</span>
+                                <div class="deck-visual-tags">
+                                    {% for tag in track.tags %}
+                                    <span class="deck-tag">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
             {% endfor %}
         </div>
@@ -169,10 +255,67 @@
 <section id="partners" class="section-soft section-entrance">
     <div class="container">
         <p class="eyebrow">04 / THE NETWORK</p><h2 class="section-title">Partners and Sponsors</h2>
-        <div class="partner-layout">
-            <div><h3>Organisers</h3><div class="partner-list">{% for org in config.ORGANISERS %}<a class="partner-card" href="/clubs/{{ org.slug }}"><span class="organiser-logo-wrap {% if org.slug == 'velocity' %}velocity-logo-wrap{% elif org.slug == 'horizon' %}horizon-logo-wrap{% else %}ipo-logo-wrap{% endif %}"><img class="organiser-logo organiser-logo-{{ org.slug }}" src="{% if org.slug == 'velocity' %}/velocity-logo.png{% elif org.slug == 'horizon' %}/horizon-logo.png{% else %}/ipo-logo.png{% endif %}" alt="{{ org.name }} logo" loading="lazy"></span><strong>{{ org.name }}</strong><span>{{ org.desc }}</span><span class="partner-link">View details →</span></a>{% endfor %}</div></div>
-            <div class="partner-card host-card"><p class="eyebrow">HOST INSTITUTION</p><img class="host-university-logo" src="/qtm-logo.png" alt="Quantum University logo" loading="lazy"><strong>{{ config.HOST_INSTITUTION }}</strong><span>Roorkee, Uttarakhand, India</span></div>
+        <p class="sponsor-intro">Collaborating with organisations that empower innovation.</p>
+    </div>
+    <div class="sponsor-marquee" aria-label="Our partners">
+        <div class="sponsor-marquee__row sponsor-marquee__row--left">
+            <div class="sponsor-marquee__track">
+                {# Primary set 1 #}
+                {% for sponsor in config.SPONSORS %}
+                <a class="sponsor-logo-item" href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }}">
+                    <img class="sponsor-logo-img" src="{{ sponsor.logo }}" alt="{{ sponsor.alt }}">
+                </a>
+                {% endfor %}
+                {# Primary set 2 (for wide screen coverage) #}
+                {% for sponsor in config.SPONSORS %}
+                <a class="sponsor-logo-item" href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }}">
+                    <img class="sponsor-logo-img" src="{{ sponsor.logo }}" alt="{{ sponsor.alt }}">
+                </a>
+                {% endfor %}
+
+                {# Duplicate sets for seamless loop (hidden from screen readers) #}
+                {% for sponsor in config.SPONSORS %}
+                <a class="sponsor-logo-item" href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                    <img class="sponsor-logo-img" src="{{ sponsor.logo }}" alt="">
+                </a>
+                {% endfor %}
+                {% for sponsor in config.SPONSORS %}
+                <a class="sponsor-logo-item" href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                    <img class="sponsor-logo-img" src="{{ sponsor.logo }}" alt="">
+                </a>
+                {% endfor %}
+            </div>
         </div>
+        <div class="sponsor-marquee__row sponsor-marquee__row--right">
+            <div class="sponsor-marquee__track">
+                {# Primary set 1 (reverse order for visual depth) #}
+                {% for sponsor in config.SPONSORS | reverse %}
+                <a class="sponsor-logo-item" href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }}">
+                    <img class="sponsor-logo-img" src="{{ sponsor.logo }}" alt="{{ sponsor.alt }}">
+                </a>
+                {% endfor %}
+                {# Primary set 2 #}
+                {% for sponsor in config.SPONSORS | reverse %}
+                <a class="sponsor-logo-item" href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ sponsor.name }}">
+                    <img class="sponsor-logo-img" src="{{ sponsor.logo }}" alt="{{ sponsor.alt }}">
+                </a>
+                {% endfor %}
+
+                {# Duplicate sets for seamless loop #}
+                {% for sponsor in config.SPONSORS | reverse %}
+                <a class="sponsor-logo-item" href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                    <img class="sponsor-logo-img" src="{{ sponsor.logo }}" alt="">
+                </a>
+                {% endfor %}
+                {% for sponsor in config.SPONSORS | reverse %}
+                <a class="sponsor-logo-item" href="{{ sponsor.url }}" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                    <img class="sponsor-logo-img" src="{{ sponsor.logo }}" alt="">
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="open-partnership"><div><h3>Technology, knowledge, and sponsorship opportunities are open.</h3><p>Contact the organisers to explore a partnership.</p></div><a href="#contact" class="btn btn-primary">Become a Partner</a></div>
     </div>
 </section>
