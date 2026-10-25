@@ -193,7 +193,7 @@
                 const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-height")) || 72;
                 const tabsHeight = deckTabsWrapper ? deckTabsWrapper.offsetHeight : 54;
                 const cardIndex = parseInt(targetCard.getAttribute("data-card-index")) || 0;
-                
+
                 const cardRect = targetCard.getBoundingClientRect();
                 const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
                 // Offset calculation accounts for sticky navbar + sticky tabs + card stacking offset

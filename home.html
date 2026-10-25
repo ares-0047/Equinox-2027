@@ -336,8 +336,21 @@
     </div></div>
 </section>
 
+<section id="global-network" class="global-network-section section-entrance">
+    <div class="container">
+        <div class="global-network-heading">
+            <div>
+                <p class="eyebrow">08 / BEYOND BORDERS</p>
+                <h2 class="section-title">International Institutions</h2>
+                <p class="section-intro">Connecting minds, institutions, and innovators across borders. Explore the global network of academic institutions collaborating with Equinox 2027.</p>
+            </div>
+            <a class="btn btn-primary global-network-button" href="/network">International Institutions <span aria-hidden="true">→</span></a>
+        </div>
+    </div>
+</section>
+
 <section id="faqs" class="section-soft section-entrance">
-    <div class="container narrow"><p class="eyebrow">08 / ANSWERS</p><h2 class="section-title">Frequently Asked Questions</h2><div class="accordion">
+    <div class="container narrow"><p class="eyebrow">09 / ANSWERS</p><h2 class="section-title">Frequently Asked Questions</h2><div class="accordion">
         {% set faqs = [
             {"q": "What is EQUINOX 2027?", "a": "EQUINOX 2027 is a 36-hour international hybrid hackathon hosted by Quantum University. It brings together students, developers, innovators, researchers, and technology enthusiasts to collaborate on practical solutions to real-world challenges."},
             {"q": "Is the hackathon international?", "a": "Yes. EQUINOX 2027 is designed for participants from different institutions, backgrounds, and regions. The hybrid format enables local teams to participate on campus while international participants can join and collaborate online."},
@@ -357,7 +370,7 @@
 </section>
 
 <section id="contact" class="section-entrance">
-    <div class="container"><p class="eyebrow">09 / CONNECT</p><h2 class="section-title">Contact</h2><div class="contact-grid"><div class="contact-details"><h3>Let’s build what the future needs.</h3><p><strong>Event:</strong> {{ config.EVENT_NAME }}</p><p><strong>Organisers:</strong> Velocity, Horizon IoT Club, and International Partnership Office.</p><p><strong>Email:</strong> <a href="mailto:{{ config.CONTACT_EMAIL }}">{{ config.CONTACT_EMAIL }}</a></p><p><strong>Venue:</strong> {{ config.VENUE }}</p></div><form class="card contact-form" action="/contact" method="POST"><div class="form-group"><label for="name">Name</label><input id="name" name="name" type="text" required maxlength="100"></div><div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required maxlength="254"></div><div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="5" required maxlength="2000"></textarea></div><button class="btn btn-primary" type="submit">Send Message</button><p class="form-note">No email service is configured yet; your message will be acknowledged without claiming delivery.</p></form></div></div>
+    <div class="container"><p class="eyebrow">10 / CONNECT</p><h2 class="section-title">Contact</h2><div class="contact-grid"><div class="contact-details"><h3>Let’s build what the future needs.</h3><p><strong>Event:</strong> {{ config.EVENT_NAME }}</p><p><strong>Organisers:</strong> Velocity, Horizon IoT Club, and International Partnership Office.</p><p><strong>Email:</strong> <a href="mailto:{{ config.CONTACT_EMAIL }}">{{ config.CONTACT_EMAIL }}</a></p><p><strong>Venue:</strong> {{ config.VENUE }}</p></div><form class="card contact-form" action="/contact" method="POST"><div class="form-group"><label for="name">Name</label><input id="name" name="name" type="text" required maxlength="100"></div><div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required maxlength="254"></div><div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="5" required maxlength="2000"></textarea></div><button class="btn btn-primary" type="submit">Send Message</button><p class="form-note">No email service is configured yet; your message will be acknowledged without claiming delivery.</p></form></div></div>
 </section>
 
 <footer id="footer">
