@@ -97,24 +97,6 @@
         });
     });
 
-    const contactForm = document.getElementById("contact-form");
-    if (contactForm) {
-        contactForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const recipient = contactForm.getAttribute("data-recipient");
-            const name = document.getElementById("name").value.trim();
-            const senderEmail = document.getElementById("email").value.trim();
-            const message = document.getElementById("message").value.trim();
-            const subject = encodeURIComponent("Equinox 2027 enquiry from " + name);
-            const body = encodeURIComponent(
-                "Name: " + name + "\n" +
-                "Email: " + senderEmail + "\n\n" +
-                message
-            );
-            window.location.assign("https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(recipient) + "&su=" + subject + "&body=" + body);
-        });
-    }
-
     // -------------------------------------------------------------
     // Search overlay & modal
     // -------------------------------------------------------------
@@ -131,7 +113,7 @@
         ["Registration", "Learn how to register", "#registration"],
         ["FAQs", "Find answers to common questions", "#faqs"],
         ["Contact", "Get in touch with the organisers", "#contact"],
-        ["Quantum University", "Host institution", "#partners"],
+        ["Quantum University", "Host institution", "#about-us"],
         ["Velocity", "Gaming and Game Development Club", "/clubs/velocity"],
         ["Horizon IoT Club", "IoT and connected technologies", "/clubs/horizon"],
         ["IPO", "International Partnership Office", "/clubs/ipo"]
