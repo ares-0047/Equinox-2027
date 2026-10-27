@@ -8,7 +8,6 @@ module.exports = {
     VENUE: "Shyamji Auditorium, Quantum University, Roorkee, Uttarakhand, India",
     PARTICIPATION_FORMAT: "Hybrid (On-campus & International Online)",
     HOST_INSTITUTION: "Quantum University",
-    UNIVERSITY_URL: "https://www.quantumuniversity.edu.in/",
     
     ORGANISERS: [
         {name: "Horizon IoT Club", slug: "horizon", desc: "Focused on connected technologies, IoT, and innovation."},
@@ -49,7 +48,7 @@ module.exports = {
         }
     },
     
-    CONTACT_EMAIL: "equinox@quantumuniversity.edu.in",
+    CONTACT_EMAIL: "velocityclub@quantumuniversity.edu.in",
     UNSTOP_URL: "",
     GOOGLE_FORM_URL: "",
     PARTNERSHIP_URL: "",
