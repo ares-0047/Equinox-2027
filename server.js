@@ -4,7 +4,6 @@ const config = require('./config');
 
 const app = express();
 const port = process.env.PORT || 3000;
-app.set('trust proxy', true);
 
 // Configure Nunjucks to look for HTML files in the current folder (flat structure)
 const env = nunjucks.configure(__dirname, {
@@ -35,8 +34,7 @@ app.use(express.static(__dirname));
 // Inject config variables into every page
 app.use((req, res, next) => {
     res.locals.config = config;
-    const protocol = req.get('x-forwarded-proto') || req.protocol;
-    res.locals.siteUrl = `${protocol}://${req.get('host')}`;
+    res.locals.siteUrl = `${req.protocol}://${req.get('host')}`;
     res.locals.pagePath = req.path;
     next();
 });
@@ -60,12 +58,13 @@ app.get('/sitemap.xml', (req, res) => {
 app.get('/home', (req, res) => res.render('home.html'));
 app.get('/register', (req, res) => res.render('register.html'));
 app.get('/network', (req, res) => res.render('network.html'));
+app.get('/developers', (req, res) => res.render('developers.html'));
 app.get('/clubs/:slug', (req, res) => {
     const club = config.CLUBS[req.params.slug];
     if (!club) return res.status(404).render('404.html');
     return res.render('club.html', { club });
 });
-app.post('/contact', (req, res) => {
+app.post('/contact', async (req, res) => {
     const name = typeof req.body.name === 'string' ? req.body.name.trim() : '';
     const email = typeof req.body.email === 'string' ? req.body.email.trim() : '';
     const message = typeof req.body.message === 'string' ? req.body.message.trim() : '';
@@ -75,7 +74,6 @@ app.post('/contact', (req, res) => {
         return res.status(400).send('Please provide a valid name, email address, and message.');
     }
 
-    // No email provider is configured, so acknowledge receipt without claiming delivery.
     return res.redirect('/home#contact');
 });
 
@@ -89,6 +87,10 @@ app.use((err, req, res, next) => {
     return res.status(500).render('500.html');
 });
 
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-});
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Server is running at http://localhost:${port}`);
+    });
+}
+
+module.exports = app;

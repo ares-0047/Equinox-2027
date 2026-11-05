@@ -370,11 +370,30 @@
 </section>
 
 <section id="contact" class="section-entrance">
-    <div class="container"><p class="eyebrow">10 / CONNECT</p><h2 class="section-title">Contact</h2><div class="contact-grid"><div class="contact-details"><h3>Let’s build what the future needs.</h3><p><strong>Event:</strong> {{ config.EVENT_NAME }}</p><p><strong>Organisers:</strong> Velocity, Horizon IoT Club, and International Partnership Office.</p><p><strong>Email:</strong> <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to={{ config.CONTACT_EMAIL | urlencode }}" target="_blank" rel="noopener noreferrer">{{ config.CONTACT_EMAIL }}</a></p><p><strong>University:</strong> <a href="{{ config.UNIVERSITY_URL }}" target="_blank" rel="noopener noreferrer">Quantum University official website</a></p><p><strong>Venue:</strong> {{ config.VENUE }}</p></div><form class="card contact-form" id="contact-form" data-recipient="{{ config.CONTACT_EMAIL }}"><div class="form-group"><label for="name">Name</label><input id="name" name="name" type="text" required maxlength="100"></div><div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required maxlength="254"></div><div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="5" required maxlength="2000"></textarea></div><button class="btn btn-primary" type="submit">Send Message in Gmail</button><p class="form-note">Your message will open as a prefilled Gmail draft.</p></form></div></div>
+    <div class="container contact-stage">
+        <div class="contact-stage-heading">
+            <p class="eyebrow">10 / CONNECT</p>
+            <h2 class="section-title">Connect with us</h2>
+        </div>
+        <div class="contact-constellation" aria-hidden="true">
+            <span class="contact-orbit contact-orbit-one"></span>
+            <span class="contact-orbit contact-orbit-two"></span>
+            <span class="contact-orbit contact-orbit-three"></span>
+            <span class="contact-star contact-star-one"></span>
+            <span class="contact-star contact-star-two"></span>
+            <span class="contact-star contact-star-three"></span>
+            <span class="contact-core">EQX</span>
+        </div>
+        <div class="contact-info-grid">
+            <article class="contact-info-card"><span class="detail-index">EVENT</span><strong class="contact-event-name">{{ config.EVENT_NAME }}</strong><p>Velocity, Horizon IoT Club, and International Partnership Office.</p></article>
+            <article class="contact-info-card"><span class="detail-index">WRITE TO US</span><strong><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to={{ config.CONTACT_EMAIL | urlencode }}" target="_blank" rel="noopener noreferrer">{{ config.CONTACT_EMAIL }}</a></strong><p>Open your email client and connect with the organising team.</p></article>
+            <article class="contact-info-card"><span class="detail-index">FIND US</span><strong><a href="{{ config.UNIVERSITY_URL }}" target="_blank" rel="noopener noreferrer">{{ config.HOST_INSTITUTION }}</a></strong><p>{{ config.VENUE }}</p></article>
+        </div>
+        <a class="btn btn-primary contact-cta" href="{{ config.UNIVERSITY_URL }}" target="_blank" rel="noopener noreferrer">Visit Quantum University <span aria-hidden="true">→</span></a>
+    </div>
 </section>
 
 <footer id="footer">
-    <div class="container footer-grid"><div><a href="#welcome" class="footer-event-logo" aria-label="EQUINOX 2027 home"><img src="/equinox-wordmark.png" alt="EQUINOX 2027"></a><img class="footer-university-logo" src="/qtm-logo.png" alt="Quantum University"><p>{{ config.TAGLINE }}</p><p>{{ config.PARTICIPATION_FORMAT }} hackathon hosted by {{ config.HOST_INSTITUTION }}.</p></div><div><h3>Explore</h3><a href="#challenges">Challenges</a><a href="#schedule">Schedule</a><a href="#registration">Registration</a><a href="#faqs">FAQs</a></div><div><h3>Organisers</h3><a href="/home#about-velocity">Velocity</a><a href="/home#about-horizon">Horizon IoT Club</a><a href="/home#about-ipo">International Partnership Office</a><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to={{ config.CONTACT_EMAIL | urlencode }}" target="_blank" rel="noopener noreferrer">{{ config.CONTACT_EMAIL }}</a><a href="{{ config.UNIVERSITY_URL }}" target="_blank" rel="noopener noreferrer">Quantum University website</a></div></div>    <div class="container footer-bottom"><span>&copy; 2027 {{ config.EVENT_NAME }} Organisers. All rights reserved.</span><a class="btn btn-primary footer-contact-button" href="#contact">Contact</a></div>
+    <div class="container footer-grid"><div><a href="#welcome" class="footer-event-logo" aria-label="EQUINOX 2027 home"><img src="/equinox-wordmark.png" alt="EQUINOX 2027"></a><img class="footer-university-logo" src="/qtm-logo.png" alt="Quantum University"><p>{{ config.TAGLINE }}</p><p>{{ config.PARTICIPATION_FORMAT }} hackathon hosted by {{ config.HOST_INSTITUTION }}.</p></div><div><h3>Explore</h3><a href="#challenges">Challenges</a><a href="#schedule">Schedule</a><a href="#registration">Registration</a><a href="#faqs">FAQs</a></div><div><h3 class="developer-trigger" tabindex="0" role="button" aria-controls="developer-entry">Organisers</h3><a id="developer-entry" class="developer-entry" href="/developers" hidden>Meet the developers</a><a href="/home#about-velocity">Velocity</a><a href="/home#about-horizon">Horizon IoT Club</a><a href="/home#about-ipo">International Partnership Office</a><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to={{ config.CONTACT_EMAIL | urlencode }}" target="_blank" rel="noopener noreferrer">{{ config.CONTACT_EMAIL }}</a><a href="{{ config.UNIVERSITY_URL }}" target="_blank" rel="noopener noreferrer">Quantum University website</a></div></div>    <div class="container footer-bottom"><span>&copy; 2027 {{ config.EVENT_NAME }} Organisers. All rights reserved.</span><a class="btn btn-primary footer-contact-button" href="#contact">Contact</a></div>
 </footer>
-<button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑</button>
 {% endblock %}

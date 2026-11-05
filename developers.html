@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section-entrance developers-page">
+    <div class="container narrow">
+        <p class="eyebrow">THE PEOPLE BEHIND THE BUILD</p>
+        <h1 class="section-title">Meet the Developers</h1>
+        <p class="section-intro">Four people worked together to design, build, and test the EQUINOX 2027 website.</p>
+        <div class="developer-grid">
+            {% for developer in config.DEVELOPERS %}
+            <article class="card developer-card">
+                {% if developer.image %}
+                <img class="developer-photo" src="{{ developer.image }}" alt="{{ developer.name }}">
+                {% else %}
+                <div class="developer-photo-placeholder" role="img" aria-label="Photo placeholder for {{ developer.name }}">
+                    <span>Photo</span>
+                    <small>Add image here</small>
+                </div>
+                {% endif %}
+                <p class="eyebrow">{{ developer.role }}</p>
+                <h2>{{ developer.name }}</h2>
+                <p>{{ developer.bio }}</p>
+            </article>
+            {% endfor %}
+        </div>
+        <a class="btn btn-secondary" href="/home">Back to EQUINOX 2027</a>
+    </div>
+</section>
+{% endblock %}
