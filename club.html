@@ -9,7 +9,7 @@
             <p class="lead">{{ club.intro }}</p>
             <a class="btn btn-secondary" href="/home#partners">← Back to organisers</a>
         </div>
-        <div class="image-placeholder club-hero-image" role="img" aria-label="Image placeholder for {{ club.name }}">Image placeholder</div>
+        {% if club.images %}<img class="club-image club-hero-image" src="{{ club.images[4] }}" alt="{{ club.name }} club photograph">{% else %}<div class="image-placeholder club-hero-image" role="img" aria-label="Image placeholder for {{ club.name }}">Image placeholder</div>{% endif %}
     </div>
 </section>
 
@@ -21,7 +21,7 @@
             {% for paragraph in club.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
         </article>
         <aside class="club-side-card">
-            <div class="image-placeholder" role="img" aria-label="Picture placeholder for {{ club.name }}">Picture placeholder</div>
+            {% if club.images %}<img class="club-image" src="{{ club.images[0] }}" alt="{{ club.name }} club photograph">{% else %}<div class="image-placeholder" role="img" aria-label="Picture placeholder for {{ club.name }}">Picture placeholder</div>{% endif %}
             <p class="eyebrow">FEATURED MOMENTS</p>
             <p>Use this space for club photographs, project showcases, workshop highlights, or team portraits.</p>
         </aside>
@@ -33,9 +33,7 @@
         <p class="eyebrow">GALLERY</p>
         <h2 class="section-title">Club highlights</h2>
         <div class="club-gallery">
-            <div class="image-placeholder" role="img" aria-label="Gallery image placeholder">Image placeholder</div>
-            <div class="image-placeholder" role="img" aria-label="Gallery image placeholder">Image placeholder</div>
-            <div class="image-placeholder" role="img" aria-label="Gallery image placeholder">Image placeholder</div>
+            {% if club.images %}<img class="club-image" src="{{ club.images[1] }}" alt="{{ club.name }} club highlight"><img class="club-image" src="{{ club.images[2] }}" alt="{{ club.name }} club highlight"><img class="club-image" src="{{ club.images[3] }}" alt="{{ club.name }} club highlight">{% else %}<div class="image-placeholder" role="img" aria-label="Gallery image placeholder">Image placeholder</div><div class="image-placeholder" role="img" aria-label="Gallery image placeholder">Image placeholder</div><div class="image-placeholder" role="img" aria-label="Gallery image placeholder">Image placeholder</div>{% endif %}
         </div>
     </div>
 </section>
