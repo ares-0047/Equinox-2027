@@ -8,12 +8,19 @@ module.exports = {
     VENUE: "Shyamji Auditorium, Quantum University, Roorkee, Uttarakhand, India",
     PARTICIPATION_FORMAT: "Hybrid (On-campus & International Online)",
     HOST_INSTITUTION: "Quantum University",
-    UNIVERSITY_URL: "https://www.quantumuniversity.edu.in/",
+    UNIVERSITY_URL: "https://quantumuniversity.edu.in/",
     
     ORGANISERS: [
         {name: "Horizon IoT Club", slug: "horizon", desc: "Focused on connected technologies, IoT, and innovation."},
         {name: "Velocity", slug: "velocity", desc: "Quantum University Gaming and Game Development Club."},
         {name: "International Partnership Office (IPO)", slug: "ipo", desc: "Quantum University's international collaboration and partnership office."}
+    ],
+
+    DEVELOPERS: [
+        {name: "Ashutosh", role: "Lead Developer", bio: "Guided the website architecture and brought the event experience together.", image: ""},
+        {name: "Praneel", role: "UI/UX Designer", bio: "Shaped the visual language and designed a clear, welcoming experience.", image: ""},
+        {name: "Utkrisht", role: "Front-end Developer", bio: "Built the responsive interface and interactive sections for the site.", image: ""},
+        {name: "Suraj", role: "Tester", bio: "Tested the website flow and helped make every page reliable for visitors.", image: ""}
     ],
 
     CLUBS: {

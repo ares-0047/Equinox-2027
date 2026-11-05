@@ -97,21 +97,32 @@
         });
     });
 
-    const contactForm = document.getElementById("contact-form");
-    if (contactForm) {
-        contactForm.addEventListener("submit", function (event) {
+    const developerTrigger = document.querySelector(".developer-trigger");
+    const developerEntry = document.getElementById("developer-entry");
+    if (developerTrigger && developerEntry) {
+        let clickCount = 0;
+        let resetTimer;
+        const revealDeveloperEntry = function () {
+            clickCount += 1;
+            window.clearTimeout(resetTimer);
+            resetTimer = window.setTimeout(function () { clickCount = 0; }, 5000);
+            if (clickCount >= 5) {
+                developerEntry.hidden = false;
+                clickCount = 0;
+            }
+        };
+        developerTrigger.addEventListener("mousedown", function (event) {
             event.preventDefault();
-            const recipient = contactForm.getAttribute("data-recipient");
-            const name = document.getElementById("name").value.trim();
-            const senderEmail = document.getElementById("email").value.trim();
-            const message = document.getElementById("message").value.trim();
-            const subject = encodeURIComponent("Equinox 2027 enquiry from " + name);
-            const body = encodeURIComponent(
-                "Name: " + name + "\n" +
-                "Email: " + senderEmail + "\n\n" +
-                message
-            );
-            window.location.assign("https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(recipient) + "&su=" + subject + "&body=" + body);
+        });
+        developerTrigger.addEventListener("selectstart", function (event) {
+            event.preventDefault();
+        });
+        developerTrigger.addEventListener("click", revealDeveloperEntry);
+        developerTrigger.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                revealDeveloperEntry();
+            }
         });
     }
 
@@ -179,17 +190,6 @@
     });
     document.addEventListener("keydown", function (event) {
         if (event.key === "Escape" && overlay && !overlay.hidden) closeSearch();
-    });
-
-    // -------------------------------------------------------------
-    // Back to top button
-    // -------------------------------------------------------------
-    const backToTop = document.getElementById("back-to-top");
-    window.addEventListener("scroll", function () {
-        backToTop?.classList.toggle("visible", window.scrollY > 600);
-    }, { passive: true });
-    backToTop?.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
     // -------------------------------------------------------------
