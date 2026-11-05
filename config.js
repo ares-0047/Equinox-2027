@@ -21,6 +21,7 @@ module.exports = {
             name: "Velocity",
             label: "Gaming & Game Development Club, Quantum University",
             intro: "Velocity is the Gaming and Game Development Club of Quantum University, dedicated to bringing together gaming enthusiasts, developers, programmers, and technology innovators under one community.",
+            images: ["/velocity-1.jpg", "/velocity-2.jpg", "/velocity-3.jpg", "/velocity-4.jpg", "/velocity-5.jpg"],
             paragraphs: [
                 "The club aims to bridge the gap between gaming and technology by encouraging students to explore game development, competitive gaming, artificial intelligence, software development, and emerging digital technologies.",
                 "Through gaming tournaments, hands-on workshops, technical sessions, hackathons, and collaborative initiatives, Velocity provides students with opportunities to develop practical skills, showcase their creativity, and work on innovative projects. The club promotes teamwork, technical excellence, and a culture of learning through experimentation.",
@@ -31,6 +32,7 @@ module.exports = {
             name: "Horizon",
             label: "IoT Club, Quantum University",
             intro: "Horizon is the Internet of Things (IoT) Club at Quantum University, focused on exploring the intersection of connected devices, embedded systems, automation, and intelligent technologies.",
+            images: ["/horizon-1.jpg", "/horizon-2.jpg", "/horizon-3.jpg", "/horizon-4.jpg", "/horizon-5.png"],
             paragraphs: [
                 "The club encourages students to transform ideas into practical solutions by combining hardware, software, sensors, networking, and emerging technologies.",
                 "Through technical workshops, hands-on projects, innovation challenges, and collaborative development activities, Horizon provides a platform for students to experiment with IoT applications and develop solutions for real-world problems. Its areas of interest include smart systems, connected devices, automation, embedded technology, and the integration of IoT with artificial intelligence.",
@@ -41,6 +43,7 @@ module.exports = {
             name: "International Partnership Office (IPO)",
             label: "Quantum University",
             intro: "The International Partnership Office (IPO) at Quantum University works to foster international collaboration, strengthen global academic relationships, and create opportunities for cross-cultural learning and engagement.",
+            images: ["/ipo-1.jpg", "/ipo-2.jpg", "/ipo-3.jpg", "/ipo-4.jpg", "/ipo-5.jpg"],
             paragraphs: [
                 "The office supports initiatives that connect the university with international institutions, organisations, experts, and student communities.",
                 "By promoting global partnerships, international engagement, collaborative programmes, and knowledge exchange, IPO contributes to expanding students' exposure to global perspectives and emerging opportunities. Its initiatives help create an environment where diverse ideas, cultures, and academic experiences come together.",
@@ -143,12 +146,12 @@ module.exports = {
     ],
     
     SCHEDULE: [
-        {event: "Registration Opens", time: "To be announced"},
-        {event: "Registration Closes", time: "To be announced"},
-        {event: "Opening Ceremony", time: "Schedule to be announced"},
-        {event: "Challenge Briefing", time: "Schedule to be announced"},
-        {event: "Build Period", time: "Schedule to be announced"},
-        {event: "Project Submission", time: "Schedule to be announced"},
-        {event: "Evaluation and Closing", time: "Schedule to be announced"}
+        {event: "Registration Opens", time: "15 November 2026"},
+        {event: "Registration Closes", time: "18 February 2027"},
+        {event: "Opening Ceremony", time: "24 February 2027"},
+        {event: "Challenge Briefing", time: "24 February 2027"},
+        {event: "Build Period", time: "24–25 February 2027"},
+        {event: "Project Submission", time: "25 February 2027"},
+        {event: "Evaluation and Closing", time: "25 February 2027"}
     ]
 };
