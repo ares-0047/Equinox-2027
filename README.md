@@ -5,7 +5,7 @@ Express, Nunjucks, HTML5, vanilla CSS, and vanilla JavaScript.
 
 ## Run locally
 
-From the project directory in PowerShell:
+From the project directory in Terminal:
 
 ```powershell
 npm install
