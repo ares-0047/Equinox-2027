@@ -11,11 +11,18 @@
             const isOpen = navLinks.classList.toggle("open");
             menuToggle.setAttribute("aria-expanded", String(isOpen));
         });
-        navLinks.querySelectorAll("a").forEach(function (link) {
+        navLinks.querySelectorAll("a, button").forEach(function (link) {
             link.addEventListener("click", function () {
                 navLinks.classList.remove("open");
                 menuToggle.setAttribute("aria-expanded", "false");
             });
+        });
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && navLinks.classList.contains("open")) {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.focus();
+            }
         });
     }
 
