@@ -17,10 +17,10 @@ module.exports = {
     ],
 
     DEVELOPERS: [
-        {name: "Ashutosh", role: "Lead Developer", bio: "Guided the website architecture and brought the event experience together.", image: ""},
-        {name: "Praneel", role: "UI/UX Designer", bio: "Shaped the visual language and designed a clear, welcoming experience.", image: ""},
-        {name: "Utkrisht", role: "Front-end Developer", bio: "Built the responsive interface and interactive sections for the site.", image: ""},
-        {name: "Suraj", role: "Tester", bio: "Tested the website flow and helped make every page reliable for visitors.", image: ""}
+        {name: "Ashutosh Kumar Singh", role: "Lead Developer", bio: "The backbone of the Website, shaping the entire architecture of Equinox", image: "/assets/developer-ashutosh.webp", linkedin: "https://www.linkedin.com/in/ashutosh-kumar-singh-bb589a380/"},
+        {name: "Praneel Kumar Labh", role: "Design Engineer", bio: "Architect of the entire visual Language of Equinox, its branding and its design philosophy.", image: "/assets/developer-praneel.webp", linkedin: "https://www.linkedin.com/in/praneellabh/"},
+        {name: "Utkrisht Kaushik", role: "Front-end Developer", bio: "Built the responsive interface and interactive sections for the site.", image: "/assets/developer-utkrisht.webp", linkedin: "https://www.linkedin.com/in/utkrisht-kaushik-564972381/"},
+        {name: "Suraj Jana", role: "Tester", bio: "Tested the website flow and helped make every page reliable for visitors.", image: "/assets/developer-suraj.webp", linkedin: "https://www.linkedin.com/in/suraj-jana-845223386/"}
     ],
 
     CLUBS: {

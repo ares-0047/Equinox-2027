@@ -1849,3 +1849,203 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
     .stage-orbit-outer, .stage-orbit-inner, .stage-orbit-arc, .stage-orbit-arc-reverse { animation: none !important; }
 }
+
+
+/* ================================================================
+   EQUINOX 2027 — Developers page refinement
+   Four equal profile tiles; order and copy are supplied by config.js.
+   ================================================================ */
+.developers-page {
+    --dev-paper: #f4f0e7;
+    --dev-ink: #191719;
+    --dev-muted: #716d67;
+    --dev-red: #e8001d;
+    padding-top: clamp(48px, 6vw, 76px);
+    padding-bottom: clamp(48px, 6vw, 76px);
+    background:
+        radial-gradient(circle at 88% 4%, rgba(232, 0, 29, .055), transparent 24rem),
+        linear-gradient(rgba(25, 23, 25, .022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(25, 23, 25, .022) 1px, transparent 1px),
+        var(--dev-paper);
+    background-size: auto, 44px 44px, 44px 44px, auto;
+    color: var(--dev-ink);
+    overflow: hidden;
+}
+.developers-shell {
+    width: min(1240px, calc(100% - 64px));
+}
+.developers-page > .developers-shell > .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 17px;
+    color: var(--dev-muted);
+    font-size: .67rem;
+    letter-spacing: .15em;
+}
+.developers-page > .developers-shell > .eyebrow::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: var(--dev-red);
+    box-shadow: 0 0 0 4px rgba(232, 0, 29, .1);
+}
+.developers-page .section-title {
+    max-width: 900px;
+    margin-bottom: 14px;
+    font-size: clamp(2.7rem, 6vw, 5.4rem);
+    line-height: .96;
+    letter-spacing: -.075em;
+}
+.developers-page .section-intro {
+    max-width: 620px;
+    margin: 0;
+    color: var(--dev-muted);
+    font-size: clamp(.98rem, 1.5vw, 1.12rem);
+    line-height: 1.65;
+}
+.developers-page .developer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 16px;
+    margin: clamp(30px, 4vw, 46px) 0 28px;
+}
+.developers-page .developer-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(53, 32, 49, .15);
+    border-radius: 12px;
+    background: #fbf9f4;
+    box-shadow: 0 12px 32px rgba(25, 23, 25, .055);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.developers-page .developer-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(232, 0, 29, .34);
+    box-shadow: 0 18px 38px rgba(25, 23, 25, .1);
+}
+.developers-page .developer-photo-wrap,
+.developers-page .developer-photo-placeholder {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 4.7;
+    flex: 0 0 auto;
+    margin: 0;
+    overflow: hidden;
+    background: #e5e0d8;
+}
+.developers-page .developer-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    object-position: center 24%;
+    transition: transform .55s cubic-bezier(.2, .7, .2, 1);
+}
+.developers-page .developer-card:nth-child(1) .developer-photo { object-position: center 20%; }
+.developers-page .developer-card:nth-child(2) .developer-photo { object-position: center 23%; }
+.developers-page .developer-card:nth-child(3) .developer-photo { object-position: center 20%; }
+.developers-page .developer-card:nth-child(4) .developer-photo { object-position: center 20%; }
+.developers-page .developer-card:hover .developer-photo { transform: scale(1.035); }
+.developers-page .developer-photo-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 58% 0 0;
+    background: linear-gradient(180deg, transparent, rgba(20, 18, 20, .22));
+    pointer-events: none;
+}
+.developers-page .developer-index {
+    position: absolute;
+    z-index: 1;
+    left: 15px;
+    bottom: 13px;
+    color: #fff;
+    font-family: var(--tech-font, ui-monospace, monospace);
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+.developers-page .developer-index i {
+    color: rgba(255,255,255,.7);
+    font-style: normal;
+}
+.developers-page .developer-card-copy {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 19px 18px 21px;
+}
+.developers-page .developer-card-copy .eyebrow {
+    margin: 0 0 9px;
+    color: var(--dev-red);
+    font-family: var(--tech-font, ui-monospace, monospace);
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.developers-page .developer-card h2 {
+    margin: 0 0 10px;
+    color: var(--dev-ink);
+    font-size: clamp(1.08rem, 1.5vw, 1.42rem);
+    line-height: 1.12;
+    letter-spacing: -.045em;
+    overflow-wrap: anywhere;
+}
+.developers-page .developer-bio {
+    margin: 0;
+    color: var(--dev-muted);
+    font-size: .86rem;
+    line-height: 1.6;
+}
+.developers-page .developers-back-link {
+    margin-top: 2px;
+}
+@media (max-width: 1050px) {
+    .developers-page .developer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .developers-page .developer-photo-wrap,
+    .developers-page .developer-photo-placeholder { aspect-ratio: 5 / 4.4; }
+    .developers-page .developer-card h2 { font-size: clamp(1.2rem, 2.6vw, 1.6rem); }
+}
+@media (max-width: 560px) {
+    .developers-shell { width: min(100% - 32px, 1240px); }
+    .developers-page .section-title { font-size: clamp(2.55rem, 12vw, 4rem); }
+    .developers-page .developer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 26px; }
+    .developers-page .developer-photo-wrap,
+    .developers-page .developer-photo-placeholder { aspect-ratio: 4 / 4.9; }
+    .developers-page .developer-card-copy { padding: 14px 12px 16px; }
+    .developers-page .developer-card-copy .eyebrow { font-size: .49rem; letter-spacing: .09em; }
+    .developers-page .developer-card h2 { font-size: clamp(.94rem, 4vw, 1.15rem); }
+    .developers-page .developer-bio { font-size: .77rem; line-height: 1.5; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .developers-page .developer-card,
+    .developers-page .developer-photo { transition: none; }
+}
+.developer-card {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.developer-card:hover {
+    transform: translateY(-5px);
+}
+
+.developer-card:focus-visible {
+    outline: 3px solid #E8001D;
+    outline-offset: 4px;
+}
