@@ -104,33 +104,10 @@
         });
     });
 
-    const developerTrigger = document.querySelector(".developer-trigger");
+    // Show About the Developers from page load
     const developerEntry = document.getElementById("developer-entry");
-    if (developerTrigger && developerEntry) {
-        let clickCount = 0;
-        let resetTimer;
-        const revealDeveloperEntry = function () {
-            clickCount += 1;
-            window.clearTimeout(resetTimer);
-            resetTimer = window.setTimeout(function () { clickCount = 0; }, 5000);
-            if (clickCount >= 5) {
-                developerEntry.hidden = false;
-                clickCount = 0;
-            }
-        };
-        developerTrigger.addEventListener("mousedown", function (event) {
-            event.preventDefault();
-        });
-        developerTrigger.addEventListener("selectstart", function (event) {
-            event.preventDefault();
-        });
-        developerTrigger.addEventListener("click", revealDeveloperEntry);
-        developerTrigger.addEventListener("keydown", function (event) {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                revealDeveloperEntry();
-            }
-        });
+    if (developerEntry) {
+        developerEntry.hidden = false;
     }
 
     // -------------------------------------------------------------
@@ -152,7 +129,8 @@
         ["Quantum University", "Host institution", "#partners"],
         ["Velocity", "Gaming and Game Development Club", "/clubs/velocity"],
         ["Horizon IoT Club", "IoT and connected technologies", "/clubs/horizon"],
-        ["IPO", "International Partnership Office", "/clubs/ipo"]
+        ["IPO", "International Partnership Office", "/clubs/ipo"],
+        ["About the Developers", "Meet the people behind EQUINOX 2027", "/developers"]
     ];
 
     function renderResults(query) {

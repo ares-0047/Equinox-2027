@@ -1,28 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="section-entrance developers-page">
-    <div class="container narrow">
+<section class="section-entrance developers-page" aria-labelledby="developers-title">
+    <div class="container narrow developers-shell">
         <p class="eyebrow">THE PEOPLE BEHIND THE BUILD</p>
-        <h1 class="section-title">Meet the Developers</h1>
+        <h1 class="section-title" id="developers-title">Meet the Developers</h1>
         <p class="section-intro">Four people worked together to design, build, and test the EQUINOX 2027 website.</p>
+
         <div class="developer-grid">
             {% for developer in config.DEVELOPERS %}
-            <article class="card developer-card">
+            <a href="{{ developer.linkedin }}" target="_blank" rel="noopener noreferrer" class="card developer-card" aria-label="View {{ developer.name }}'s LinkedIn profile">
                 {% if developer.image %}
-                <img class="developer-photo" src="{{ developer.image }}" alt="{{ developer.name }}">
+                <div class="developer-photo-wrap">
+                    <img class="developer-photo" src="{{ developer.image }}" alt="Portrait of {{ developer.name }}" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy" decoding="async"{% endif %}>
+                    <span class="developer-index">{{ loop.index }} <i>/ 04</i></span>
+                </div>
                 {% else %}
                 <div class="developer-photo-placeholder" role="img" aria-label="Photo placeholder for {{ developer.name }}">
                     <span>Photo</span>
                     <small>Add image here</small>
                 </div>
                 {% endif %}
-                <p class="eyebrow">{{ developer.role }}</p>
-                <h2>{{ developer.name }}</h2>
-                <p>{{ developer.bio }}</p>
-            </article>
+                <div class="developer-card-copy">
+                    <p class="eyebrow">{{ developer.role }}</p>
+                    <h2>{{ developer.name }}</h2>
+                    <p class="developer-bio">{{ developer.bio }}</p>
+                </div>
+            </a>
             {% endfor %}
         </div>
-        <a class="btn btn-secondary" href="/home">Back to EQUINOX 2027</a>
+        <a class="btn btn-secondary developers-back-link" href="/home">Back to EQUINOX 2027</a>
     </div>
 </section>
 {% endblock %}
