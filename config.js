@@ -17,10 +17,10 @@ module.exports = {
     ],
 
     DEVELOPERS: [
-        {name: "Ashutosh Kumar Singh", role: "Lead Developer", bio: "The backbone of the Website, shaping the entire architecture of Equinox", image: "/assets/developer-ashutosh.webp", linkedin: "https://www.linkedin.com/in/ashutosh-kumar-singh-bb589a380/"},
-        {name: "Praneel Kumar Labh", role: "Design Engineer", bio: "Architect of the entire visual Language of Equinox, its branding and its design philosophy.", image: "/assets/developer-praneel.webp", linkedin: "https://www.linkedin.com/in/praneellabh/"},
-        {name: "Utkrisht Kaushik", role: "Front-end Developer", bio: "Built the responsive interface and interactive sections for the site.", image: "/assets/developer-utkrisht.webp", linkedin: "https://www.linkedin.com/in/utkrisht-kaushik-564972381/"},
-        {name: "Suraj Jana", role: "Tester", bio: "Tested the website flow and helped make every page reliable for visitors.", image: "/assets/developer-suraj.webp", linkedin: "https://www.linkedin.com/in/suraj-jana-845223386/"}
+        {name: "Ashutosh Kumar Singh", role: "Lead Developer", bio: "The backbone of the Website, shaping the entire architecture of Equinox", image: "/ashutosh.jpeg", linkedin: "https://www.linkedin.com/in/ashutosh-kumar-singh-bb589a380/"},
+        {name: "Praneel Kumar Labh", role: "Design Engineer", bio: "Architect of the entire visual Language of Equinox, its branding and its design philosophy.", image: "/praneel.jpeg", linkedin: "https://www.linkedin.com/in/praneellabh/"},
+        {name: "Utkrisht Kaushik", role: "Front-end Developer", bio: "Built the responsive interface and interactive sections for the site.", image: "/utkrisht.jpeg", linkedin: "https://www.linkedin.com/in/utkrisht-kaushik-564972381/"},
+        {name: "Suraj Jana", role: "Tester", bio: "Tested the website flow and helped make every page reliable for visitors.", image: "/suraj.jpeg", linkedin: "https://www.linkedin.com/in/suraj-jana-845223386/"}
     ],
 
     CLUBS: {
