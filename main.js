@@ -91,6 +91,60 @@
     }
 
     // -------------------------------------------------------------
+    // Global tactile motion
+    // -------------------------------------------------------------
+    const motionReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const staggerGroups = document.querySelectorAll(
+        ".card-grid, .steps, .partner-list, .contact-info-grid, .about-columns, .feature-list"
+    );
+    staggerGroups.forEach(function (group) {
+        group.classList.add("motion-stagger");
+        Array.from(group.children).forEach(function (child, index) {
+            child.style.setProperty("--motion-index", String(index));
+        });
+    });
+
+    if (!motionReduced) {
+        document.addEventListener("pointerdown", function (event) {
+            const target = event.target.closest(
+                ".btn, .nav-search, .menu-toggle, .icon-button, .clear-search, .deck-tab, .accordion-header, .card, .partner-card, .event-detail-card, .contact-info-card, .sponsor-logo-item"
+            );
+            if (!target || target.matches(":disabled") || target.classList.contains("motion-ripple")) return;
+
+            const rect = target.getBoundingClientRect();
+            const ripple = document.createElement("span");
+            ripple.className = "motion-ripple";
+            ripple.style.left = (event.clientX - rect.left) + "px";
+            ripple.style.top = (event.clientY - rect.top) + "px";
+            target.appendChild(ripple);
+            ripple.addEventListener("animationend", function () {
+                ripple.remove();
+            }, { once: true });
+        });
+    }
+
+    const contactStage = document.querySelector(".contact-stage");
+    const contactConstellation = document.querySelector(".contact-constellation");
+    if (contactStage && contactConstellation && !motionReduced) {
+        let pointerFrame = 0;
+        contactStage.addEventListener("pointermove", function (event) {
+            if (pointerFrame) return;
+            pointerFrame = window.requestAnimationFrame(function () {
+                const rect = contactStage.getBoundingClientRect();
+                const x = ((event.clientX - rect.left) / rect.width - .5) * 10;
+                const y = ((event.clientY - rect.top) / rect.height - .5) * 8;
+                contactConstellation.style.setProperty("--motion-x", x + "px");
+                contactConstellation.style.setProperty("--motion-y", y + "px");
+                contactConstellation.style.transform = "translate(calc(-50% + var(--motion-x)), var(--motion-y))";
+                pointerFrame = 0;
+            });
+        }, { passive: true });
+        contactStage.addEventListener("pointerleave", function () {
+            contactConstellation.style.transform = "translateX(-50%)";
+        }, { passive: true });
+    }
+
+    // -------------------------------------------------------------
     // Accordion interaction
     // -------------------------------------------------------------
     document.querySelectorAll(".accordion-header").forEach(function (button) {
