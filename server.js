@@ -4,6 +4,10 @@ const config = require('./config');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
+
+// Render terminates TLS at its proxy, so trust it when generating absolute URLs.
+app.set('trust proxy', 1);
 
 // Configure Nunjucks to look for HTML files in the current folder (flat structure)
 const env = nunjucks.configure(__dirname, {
@@ -40,6 +44,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
+app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
 // Keep the root URL as the primary continuous-scroll experience.
 app.get('/', (req, res) => res.redirect('/home'));
 app.get('/robots.txt', (req, res) => {
@@ -88,8 +93,8 @@ app.use((err, req, res, next) => {
 });
 
 if (require.main === module) {
-    app.listen(port, () => {
-        console.log(`Server is running at http://localhost:${port}`);
+    app.listen(port, host, () => {
+        console.log(`Server is running on ${host}:${port}`);
     });
 }
 

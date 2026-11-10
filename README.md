@@ -9,11 +9,24 @@ From the project directory in Terminal:
 
 ```powershell
 npm install
-node server.js
+npm start
 ```
 
 Open <http://localhost:3000>. The primary visitor experience is the
 continuous-scroll homepage at `/home`; `/` redirects there for compatibility.
+
+## Deploy on Render
+
+Create a **Web Service** from this repository. Render can use the included
+`render.yaml` automatically; otherwise use these settings:
+
+* **Runtime:** Node
+* **Build command:** `npm install`
+* **Start command:** `npm start`
+* **Health check path:** `/health`
+
+Render supplies the `PORT` environment variable automatically. Do not hardcode
+it in the service settings.
 
 ## Contact form and developer credits
 
